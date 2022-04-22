@@ -1,0 +1,1820 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ReseptiHakuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="component_value">
+          <Key>
+            <PropertyRef Name="EDMX_ID" />
+          </Key>
+          <Property Name="EDMX_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FOODID" Type="int" Nullable="false" />
+          <Property Name="EUFDNAME" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="BESTLOC" Type="varchar" MaxLength="50" />
+          <Property Name="ACQTYPE" Type="varchar" MaxLength="1" />
+          <Property Name="METHTYPE" Type="varchar" MaxLength="2" />
+          <Property Name="METHIND" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="eufdname_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DESCRIPT" Type="nvarchar(max)" />
+          <Property Name="LANG" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="food">
+          <Key>
+            <PropertyRef Name="FOODID" />
+          </Key>
+          <Property Name="FOODID" Type="int" Nullable="false" />
+          <Property Name="FOODNAME" Type="nvarchar(max)" />
+          <Property Name="FOODTYPE" Type="varchar" MaxLength="8" />
+          <Property Name="PROCESS" Type="varchar" MaxLength="5" />
+          <Property Name="EDPORT" Type="int" />
+          <Property Name="IGCLASS" Type="varchar" MaxLength="8" />
+          <Property Name="IGCLASSP" Type="varchar" MaxLength="8" />
+          <Property Name="FUCLASS" Type="varchar" MaxLength="8" />
+          <Property Name="FUCLASSP" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="foodtype_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DESCRIPT" Type="nvarchar(max)" />
+          <Property Name="LANG" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="fuclass_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DESCRIPT" Type="nvarchar(max)" />
+          <Property Name="LANG" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="igclass_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DESCRIPT" Type="nvarchar(max)" />
+          <Property Name="LANG" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Kategoriat">
+          <Key>
+            <PropertyRef Name="KategoriaID" />
+          </Key>
+          <Property Name="KategoriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kategoria" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuLista">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="MenunNimi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ReseptiID" Type="int" Nullable="false" />
+          <Property Name="MenunKategoriaID" Type="int" />
+        </EntityType>
+        <EntityType Name="MenunKategoriat">
+          <Key>
+            <PropertyRef Name="MenunKategoriaID" />
+          </Key>
+          <Property Name="MenunKategoriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenunKategoria" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MittayksikkoLista">
+          <Key>
+            <PropertyRef Name="MittayksikkoID" />
+          </Key>
+          <Property Name="MittayksikkoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mittayksikko" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="process_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="DESCRIPT" Type="nvarchar(max)" />
+          <Property Name="LANG" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="RaakaAineet">
+          <Key>
+            <PropertyRef Name="RaakaAineID" />
+          </Key>
+          <Property Name="RaakaAineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RaakaAine" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KategoriaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReseptienAinesosaLista">
+          <Key>
+            <PropertyRef Name="ReseptiAinesosaListaID" />
+          </Key>
+          <Property Name="ReseptiAinesosaListaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RaakaAineID" Type="int" Nullable="false" />
+          <Property Name="Maara" Type="int" Nullable="false" />
+          <Property Name="MittayksikkoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReseptienVaiheet">
+          <Key>
+            <PropertyRef Name="ReseptiVaiheID" />
+          </Key>
+          <Property Name="ReseptiVaiheID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReseptiVaihe" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReseptienVaiheidenLista">
+          <Key>
+            <PropertyRef Name="RiviID" />
+          </Key>
+          <Property Name="RiviID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReseptiID" Type="int" Nullable="false" />
+          <Property Name="ReseptiVaiheID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reseptit">
+          <Key>
+            <PropertyRef Name="ReseptiID" />
+          </Key>
+          <Property Name="ReseptiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReseptinNimi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReseptiVaiheetListaID" Type="int" Nullable="false" />
+          <Property Name="ReseptiAinesosaListaID" Type="int" Nullable="false" />
+          <Property Name="AnnosKoko" Type="int" />
+        </EntityType>
+        <EntityType Name="specdiet">
+          <Key>
+            <PropertyRef Name="EDMX_ID" />
+          </Key>
+          <Property Name="EDMX_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FOODID" Type="int" Nullable="false" />
+          <Property Name="SPECDIET" Type="varchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="specdiet_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DESCRIPT" Type="nvarchar(max)" />
+          <Property Name="LANG" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="user_component_value">
+          <Key>
+            <PropertyRef Name="EDMX_ID" />
+          </Key>
+          <Property Name="EDMX_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FOODID" Type="int" Nullable="false" />
+          <Property Name="EUFDNAME" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="BESTLOC" Type="varchar" MaxLength="50" />
+          <Property Name="ACQTYPE" Type="varchar" MaxLength="1" />
+          <Property Name="METHTYPE" Type="varchar" MaxLength="2" />
+          <Property Name="METHIND" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="user_eufdname_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DESCRIPT" Type="nvarchar(max)" />
+          <Property Name="LANG" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="user_food">
+          <Key>
+            <PropertyRef Name="FOODID" />
+          </Key>
+          <Property Name="FOODID" Type="int" Nullable="false" />
+          <Property Name="FOODNAME" Type="nvarchar(max)" />
+          <Property Name="FOODTYPE" Type="varchar" MaxLength="8" />
+          <Property Name="PROCESS" Type="varchar" MaxLength="5" />
+          <Property Name="EDPORT" Type="int" />
+          <Property Name="IGCLASS" Type="varchar" MaxLength="8" />
+          <Property Name="IGCLASSP" Type="varchar" MaxLength="8" />
+          <Property Name="FUCLASS" Type="varchar" MaxLength="8" />
+          <Property Name="FUCLASSP" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="user_foodtype_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DESCRIPT" Type="nvarchar(max)" />
+          <Property Name="LANG" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="user_fuclass_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DESCRIPT" Type="nvarchar(max)" />
+          <Property Name="LANG" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="user_igclass_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DESCRIPT" Type="nvarchar(max)" />
+          <Property Name="LANG" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="user_process_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="DESCRIPT" Type="nvarchar(max)" />
+          <Property Name="LANG" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="user_specdiet">
+          <Key>
+            <PropertyRef Name="EDMX_ID" />
+          </Key>
+          <Property Name="EDMX_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FOODID" Type="int" Nullable="false" />
+          <Property Name="SPECDIET" Type="varchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_specdiet_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DESCRIPT" Type="nvarchar(max)" />
+          <Property Name="LANG" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <Association Name="FK_COMPONENT_VALUE_EUFDNAME">
+          <End Role="eufdname_FI" Type="Self.eufdname_FI" Multiplicity="1" />
+          <End Role="component_value" Type="Self.component_value" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eufdname_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="component_value">
+              <PropertyRef Name="EUFDNAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPONENT_VALUE_FOODID">
+          <End Role="food" Type="Self.food" Multiplicity="1" />
+          <End Role="component_value" Type="Self.component_value" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="food">
+              <PropertyRef Name="FOODID" />
+            </Principal>
+            <Dependent Role="component_value">
+              <PropertyRef Name="FOODID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOOD_FOODTYPE">
+          <End Role="foodtype_FI" Type="Self.foodtype_FI" Multiplicity="0..1" />
+          <End Role="food" Type="Self.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="foodtype_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="FOODTYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOOD_FUCLASS">
+          <End Role="fuclass_FI" Type="Self.fuclass_FI" Multiplicity="0..1" />
+          <End Role="food" Type="Self.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fuclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="FUCLASS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOOD_FUCLASSP">
+          <End Role="fuclass_FI" Type="Self.fuclass_FI" Multiplicity="0..1" />
+          <End Role="food" Type="Self.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fuclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="FUCLASSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOOD_IGCLASS">
+          <End Role="igclass_FI" Type="Self.igclass_FI" Multiplicity="0..1" />
+          <End Role="food" Type="Self.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="igclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="IGCLASS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOOD_IGCLASSP">
+          <End Role="igclass_FI" Type="Self.igclass_FI" Multiplicity="0..1" />
+          <End Role="food" Type="Self.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="igclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="IGCLASSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOOD_PROCESS">
+          <End Role="process_FI" Type="Self.process_FI" Multiplicity="0..1" />
+          <End Role="food" Type="Self.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="process_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="PROCESS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENULISTA_MENUNKATEGORIAID">
+          <End Role="MenunKategoriat" Type="Self.MenunKategoriat" Multiplicity="0..1" />
+          <End Role="MenuLista" Type="Self.MenuLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenunKategoriat">
+              <PropertyRef Name="MenunKategoriaID" />
+            </Principal>
+            <Dependent Role="MenuLista">
+              <PropertyRef Name="MenunKategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENULISTA_RESEPTIID">
+          <End Role="Reseptit" Type="Self.Reseptit" Multiplicity="1" />
+          <End Role="MenuLista" Type="Self.MenuLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reseptit">
+              <PropertyRef Name="ReseptiID" />
+            </Principal>
+            <Dependent Role="MenuLista">
+              <PropertyRef Name="ReseptiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RAAKAAINEET_KATEGORIAID">
+          <End Role="Kategoriat" Type="Self.Kategoriat" Multiplicity="1" />
+          <End Role="RaakaAineet" Type="Self.RaakaAineet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoriat">
+              <PropertyRef Name="KategoriaID" />
+            </Principal>
+            <Dependent Role="RaakaAineet">
+              <PropertyRef Name="KategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESEPTIENAINESOSALISTA_MITTAYKSIKKOID">
+          <End Role="MittayksikkoLista" Type="Self.MittayksikkoLista" Multiplicity="1" />
+          <End Role="ReseptienAinesosaLista" Type="Self.ReseptienAinesosaLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MittayksikkoLista">
+              <PropertyRef Name="MittayksikkoID" />
+            </Principal>
+            <Dependent Role="ReseptienAinesosaLista">
+              <PropertyRef Name="MittayksikkoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESEPTIENAINESOSALISTA_RAAKAAINEID">
+          <End Role="RaakaAineet" Type="Self.RaakaAineet" Multiplicity="1" />
+          <End Role="ReseptienAinesosaLista" Type="Self.ReseptienAinesosaLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RaakaAineet">
+              <PropertyRef Name="RaakaAineID" />
+            </Principal>
+            <Dependent Role="ReseptienAinesosaLista">
+              <PropertyRef Name="RaakaAineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESEPTIENVAIHEIDENLISTA_RESEPTIID">
+          <End Role="Reseptit" Type="Self.Reseptit" Multiplicity="1" />
+          <End Role="ReseptienVaiheidenLista" Type="Self.ReseptienVaiheidenLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reseptit">
+              <PropertyRef Name="ReseptiID" />
+            </Principal>
+            <Dependent Role="ReseptienVaiheidenLista">
+              <PropertyRef Name="ReseptiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESEPTIENVAIHEIDENLISTA_RESEPTIVAIHEID">
+          <End Role="ReseptienVaiheet" Type="Self.ReseptienVaiheet" Multiplicity="1" />
+          <End Role="ReseptienVaiheidenLista" Type="Self.ReseptienVaiheidenLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReseptienVaiheet">
+              <PropertyRef Name="ReseptiVaiheID" />
+            </Principal>
+            <Dependent Role="ReseptienVaiheidenLista">
+              <PropertyRef Name="ReseptiVaiheID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESEPTIT_RESEPTIAINESOSALISTAID">
+          <End Role="ReseptienAinesosaLista" Type="Self.ReseptienAinesosaLista" Multiplicity="1" />
+          <End Role="Reseptit" Type="Self.Reseptit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReseptienAinesosaLista">
+              <PropertyRef Name="ReseptiAinesosaListaID" />
+            </Principal>
+            <Dependent Role="Reseptit">
+              <PropertyRef Name="ReseptiAinesosaListaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPECDIET_FOODID">
+          <End Role="food" Type="Self.food" Multiplicity="1" />
+          <End Role="specdiet" Type="Self.specdiet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="food">
+              <PropertyRef Name="FOODID" />
+            </Principal>
+            <Dependent Role="specdiet">
+              <PropertyRef Name="FOODID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPECDIET_SPECDIET">
+          <End Role="specdiet_FI" Type="Self.specdiet_FI" Multiplicity="1" />
+          <End Role="specdiet" Type="Self.specdiet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="specdiet_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="specdiet">
+              <PropertyRef Name="SPECDIET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_COMPONENT_VALUE_EUFDNAME">
+          <End Role="user_eufdname_FI" Type="Self.user_eufdname_FI" Multiplicity="1" />
+          <End Role="user_component_value" Type="Self.user_component_value" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_eufdname_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_component_value">
+              <PropertyRef Name="EUFDNAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_COMPONENT_VALUE_FOODID">
+          <End Role="user_food" Type="Self.user_food" Multiplicity="1" />
+          <End Role="user_component_value" Type="Self.user_component_value" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_food">
+              <PropertyRef Name="FOODID" />
+            </Principal>
+            <Dependent Role="user_component_value">
+              <PropertyRef Name="FOODID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_FOOD_FOODTYPE">
+          <End Role="user_foodtype_FI" Type="Self.user_foodtype_FI" Multiplicity="0..1" />
+          <End Role="user_food" Type="Self.user_food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_foodtype_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_food">
+              <PropertyRef Name="FOODTYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_FOOD_FUCLASS">
+          <End Role="user_fuclass_FI" Type="Self.user_fuclass_FI" Multiplicity="0..1" />
+          <End Role="user_food" Type="Self.user_food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_fuclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_food">
+              <PropertyRef Name="FUCLASS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_FOOD_FUCLASSP">
+          <End Role="user_fuclass_FI" Type="Self.user_fuclass_FI" Multiplicity="0..1" />
+          <End Role="user_food" Type="Self.user_food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_fuclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_food">
+              <PropertyRef Name="FUCLASSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_FOOD_IGCLASS">
+          <End Role="user_igclass_FI" Type="Self.user_igclass_FI" Multiplicity="0..1" />
+          <End Role="user_food" Type="Self.user_food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_igclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_food">
+              <PropertyRef Name="IGCLASS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_FOOD_IGCLASSP">
+          <End Role="user_igclass_FI" Type="Self.user_igclass_FI" Multiplicity="0..1" />
+          <End Role="user_food" Type="Self.user_food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_igclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_food">
+              <PropertyRef Name="IGCLASSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_FOOD_PROCESS">
+          <End Role="user_process_FI" Type="Self.user_process_FI" Multiplicity="0..1" />
+          <End Role="user_food" Type="Self.user_food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_process_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_food">
+              <PropertyRef Name="PROCESS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_SPECDIET_FOODID">
+          <End Role="user_food" Type="Self.user_food" Multiplicity="1" />
+          <End Role="user_specdiet" Type="Self.user_specdiet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_food">
+              <PropertyRef Name="FOODID" />
+            </Principal>
+            <Dependent Role="user_specdiet">
+              <PropertyRef Name="FOODID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_SPECDIET_SPECDIET">
+          <End Role="user_specdiet_FI" Type="Self.user_specdiet_FI" Multiplicity="1" />
+          <End Role="user_specdiet" Type="Self.user_specdiet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_specdiet_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_specdiet">
+              <PropertyRef Name="SPECDIET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ReseptiHakuModelStoreContainer">
+          <EntitySet Name="component_value" EntityType="Self.component_value" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eufdname_FI" EntityType="Self.eufdname_FI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="food" EntityType="Self.food" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="foodtype_FI" EntityType="Self.foodtype_FI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fuclass_FI" EntityType="Self.fuclass_FI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="igclass_FI" EntityType="Self.igclass_FI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategoriat" EntityType="Self.Kategoriat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuLista" EntityType="Self.MenuLista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenunKategoriat" EntityType="Self.MenunKategoriat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MittayksikkoLista" EntityType="Self.MittayksikkoLista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="process_FI" EntityType="Self.process_FI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RaakaAineet" EntityType="Self.RaakaAineet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReseptienAinesosaLista" EntityType="Self.ReseptienAinesosaLista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReseptienVaiheet" EntityType="Self.ReseptienVaiheet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReseptienVaiheidenLista" EntityType="Self.ReseptienVaiheidenLista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reseptit" EntityType="Self.Reseptit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="specdiet" EntityType="Self.specdiet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="specdiet_FI" EntityType="Self.specdiet_FI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_component_value" EntityType="Self.user_component_value" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_eufdname_FI" EntityType="Self.user_eufdname_FI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_food" EntityType="Self.user_food" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_foodtype_FI" EntityType="Self.user_foodtype_FI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_fuclass_FI" EntityType="Self.user_fuclass_FI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_igclass_FI" EntityType="Self.user_igclass_FI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_process_FI" EntityType="Self.user_process_FI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_specdiet" EntityType="Self.user_specdiet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_specdiet_FI" EntityType="Self.user_specdiet_FI" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_COMPONENT_VALUE_EUFDNAME" Association="Self.FK_COMPONENT_VALUE_EUFDNAME">
+            <End Role="eufdname_FI" EntitySet="eufdname_FI" />
+            <End Role="component_value" EntitySet="component_value" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPONENT_VALUE_FOODID" Association="Self.FK_COMPONENT_VALUE_FOODID">
+            <End Role="food" EntitySet="food" />
+            <End Role="component_value" EntitySet="component_value" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOOD_FOODTYPE" Association="Self.FK_FOOD_FOODTYPE">
+            <End Role="foodtype_FI" EntitySet="foodtype_FI" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOOD_FUCLASS" Association="Self.FK_FOOD_FUCLASS">
+            <End Role="fuclass_FI" EntitySet="fuclass_FI" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOOD_FUCLASSP" Association="Self.FK_FOOD_FUCLASSP">
+            <End Role="fuclass_FI" EntitySet="fuclass_FI" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOOD_IGCLASS" Association="Self.FK_FOOD_IGCLASS">
+            <End Role="igclass_FI" EntitySet="igclass_FI" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOOD_IGCLASSP" Association="Self.FK_FOOD_IGCLASSP">
+            <End Role="igclass_FI" EntitySet="igclass_FI" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOOD_PROCESS" Association="Self.FK_FOOD_PROCESS">
+            <End Role="process_FI" EntitySet="process_FI" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENULISTA_MENUNKATEGORIAID" Association="Self.FK_MENULISTA_MENUNKATEGORIAID">
+            <End Role="MenunKategoriat" EntitySet="MenunKategoriat" />
+            <End Role="MenuLista" EntitySet="MenuLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENULISTA_RESEPTIID" Association="Self.FK_MENULISTA_RESEPTIID">
+            <End Role="Reseptit" EntitySet="Reseptit" />
+            <End Role="MenuLista" EntitySet="MenuLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RAAKAAINEET_KATEGORIAID" Association="Self.FK_RAAKAAINEET_KATEGORIAID">
+            <End Role="Kategoriat" EntitySet="Kategoriat" />
+            <End Role="RaakaAineet" EntitySet="RaakaAineet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESEPTIENAINESOSALISTA_MITTAYKSIKKOID" Association="Self.FK_RESEPTIENAINESOSALISTA_MITTAYKSIKKOID">
+            <End Role="MittayksikkoLista" EntitySet="MittayksikkoLista" />
+            <End Role="ReseptienAinesosaLista" EntitySet="ReseptienAinesosaLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESEPTIENAINESOSALISTA_RAAKAAINEID" Association="Self.FK_RESEPTIENAINESOSALISTA_RAAKAAINEID">
+            <End Role="RaakaAineet" EntitySet="RaakaAineet" />
+            <End Role="ReseptienAinesosaLista" EntitySet="ReseptienAinesosaLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESEPTIENVAIHEIDENLISTA_RESEPTIID" Association="Self.FK_RESEPTIENVAIHEIDENLISTA_RESEPTIID">
+            <End Role="Reseptit" EntitySet="Reseptit" />
+            <End Role="ReseptienVaiheidenLista" EntitySet="ReseptienVaiheidenLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESEPTIENVAIHEIDENLISTA_RESEPTIVAIHEID" Association="Self.FK_RESEPTIENVAIHEIDENLISTA_RESEPTIVAIHEID">
+            <End Role="ReseptienVaiheet" EntitySet="ReseptienVaiheet" />
+            <End Role="ReseptienVaiheidenLista" EntitySet="ReseptienVaiheidenLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESEPTIT_RESEPTIAINESOSALISTAID" Association="Self.FK_RESEPTIT_RESEPTIAINESOSALISTAID">
+            <End Role="ReseptienAinesosaLista" EntitySet="ReseptienAinesosaLista" />
+            <End Role="Reseptit" EntitySet="Reseptit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPECDIET_FOODID" Association="Self.FK_SPECDIET_FOODID">
+            <End Role="food" EntitySet="food" />
+            <End Role="specdiet" EntitySet="specdiet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPECDIET_SPECDIET" Association="Self.FK_SPECDIET_SPECDIET">
+            <End Role="specdiet_FI" EntitySet="specdiet_FI" />
+            <End Role="specdiet" EntitySet="specdiet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_COMPONENT_VALUE_EUFDNAME" Association="Self.FK_USER_COMPONENT_VALUE_EUFDNAME">
+            <End Role="user_eufdname_FI" EntitySet="user_eufdname_FI" />
+            <End Role="user_component_value" EntitySet="user_component_value" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_COMPONENT_VALUE_FOODID" Association="Self.FK_USER_COMPONENT_VALUE_FOODID">
+            <End Role="user_food" EntitySet="user_food" />
+            <End Role="user_component_value" EntitySet="user_component_value" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_FOOD_FOODTYPE" Association="Self.FK_USER_FOOD_FOODTYPE">
+            <End Role="user_foodtype_FI" EntitySet="user_foodtype_FI" />
+            <End Role="user_food" EntitySet="user_food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_FOOD_FUCLASS" Association="Self.FK_USER_FOOD_FUCLASS">
+            <End Role="user_fuclass_FI" EntitySet="user_fuclass_FI" />
+            <End Role="user_food" EntitySet="user_food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_FOOD_FUCLASSP" Association="Self.FK_USER_FOOD_FUCLASSP">
+            <End Role="user_fuclass_FI" EntitySet="user_fuclass_FI" />
+            <End Role="user_food" EntitySet="user_food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_FOOD_IGCLASS" Association="Self.FK_USER_FOOD_IGCLASS">
+            <End Role="user_igclass_FI" EntitySet="user_igclass_FI" />
+            <End Role="user_food" EntitySet="user_food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_FOOD_IGCLASSP" Association="Self.FK_USER_FOOD_IGCLASSP">
+            <End Role="user_igclass_FI" EntitySet="user_igclass_FI" />
+            <End Role="user_food" EntitySet="user_food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_FOOD_PROCESS" Association="Self.FK_USER_FOOD_PROCESS">
+            <End Role="user_process_FI" EntitySet="user_process_FI" />
+            <End Role="user_food" EntitySet="user_food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_SPECDIET_FOODID" Association="Self.FK_USER_SPECDIET_FOODID">
+            <End Role="user_food" EntitySet="user_food" />
+            <End Role="user_specdiet" EntitySet="user_specdiet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_SPECDIET_SPECDIET" Association="Self.FK_USER_SPECDIET_SPECDIET">
+            <End Role="user_specdiet_FI" EntitySet="user_specdiet_FI" />
+            <End Role="user_specdiet" EntitySet="user_specdiet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ReseptiHakuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="component_value">
+          <Key>
+            <PropertyRef Name="EDMX_ID" />
+          </Key>
+          <Property Name="EDMX_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FOODID" Type="Int32" Nullable="false" />
+          <Property Name="EUFDNAME" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BESTLOC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACQTYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="METHTYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="METHIND" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="eufdname_FI" Relationship="Self.FK_COMPONENT_VALUE_EUFDNAME" FromRole="component_value" ToRole="eufdname_FI" />
+          <NavigationProperty Name="food" Relationship="Self.FK_COMPONENT_VALUE_FOODID" FromRole="component_value" ToRole="food" />
+        </EntityType>
+        <EntityType Name="eufdname_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LANG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="component_value" Relationship="Self.FK_COMPONENT_VALUE_EUFDNAME" FromRole="eufdname_FI" ToRole="component_value" />
+        </EntityType>
+        <EntityType Name="food">
+          <Key>
+            <PropertyRef Name="FOODID" />
+          </Key>
+          <Property Name="FOODID" Type="Int32" Nullable="false" />
+          <Property Name="FOODNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FOODTYPE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="PROCESS" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EDPORT" Type="Int32" />
+          <Property Name="IGCLASS" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="IGCLASSP" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="FUCLASS" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="FUCLASSP" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="component_value" Relationship="Self.FK_COMPONENT_VALUE_FOODID" FromRole="food" ToRole="component_value" />
+          <NavigationProperty Name="foodtype_FI" Relationship="Self.FK_FOOD_FOODTYPE" FromRole="food" ToRole="foodtype_FI" />
+          <NavigationProperty Name="fuclass_FI" Relationship="Self.FK_FOOD_FUCLASS" FromRole="food" ToRole="fuclass_FI" />
+          <NavigationProperty Name="fuclass_FI1" Relationship="Self.FK_FOOD_FUCLASSP" FromRole="food" ToRole="fuclass_FI" />
+          <NavigationProperty Name="igclass_FI" Relationship="Self.FK_FOOD_IGCLASS" FromRole="food" ToRole="igclass_FI" />
+          <NavigationProperty Name="igclass_FI1" Relationship="Self.FK_FOOD_IGCLASSP" FromRole="food" ToRole="igclass_FI" />
+          <NavigationProperty Name="process_FI" Relationship="Self.FK_FOOD_PROCESS" FromRole="food" ToRole="process_FI" />
+          <NavigationProperty Name="specdiet" Relationship="Self.FK_SPECDIET_FOODID" FromRole="food" ToRole="specdiet" />
+        </EntityType>
+        <EntityType Name="foodtype_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LANG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="food" Relationship="Self.FK_FOOD_FOODTYPE" FromRole="foodtype_FI" ToRole="food" />
+        </EntityType>
+        <EntityType Name="fuclass_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LANG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="food" Relationship="Self.FK_FOOD_FUCLASS" FromRole="fuclass_FI" ToRole="food" />
+          <NavigationProperty Name="food1" Relationship="Self.FK_FOOD_FUCLASSP" FromRole="fuclass_FI" ToRole="food" />
+        </EntityType>
+        <EntityType Name="igclass_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LANG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="food" Relationship="Self.FK_FOOD_IGCLASS" FromRole="igclass_FI" ToRole="food" />
+          <NavigationProperty Name="food1" Relationship="Self.FK_FOOD_IGCLASSP" FromRole="igclass_FI" ToRole="food" />
+        </EntityType>
+        <EntityType Name="Kategoriat">
+          <Key>
+            <PropertyRef Name="KategoriaID" />
+          </Key>
+          <Property Name="KategoriaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RaakaAineet" Relationship="Self.FK_RAAKAAINEET_KATEGORIAID" FromRole="Kategoriat" ToRole="RaakaAineet" />
+        </EntityType>
+        <EntityType Name="MenuLista">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="MenunNimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReseptiID" Type="Int32" Nullable="false" />
+          <Property Name="MenunKategoriaID" Type="Int32" />
+          <NavigationProperty Name="MenunKategoriat" Relationship="Self.FK_MENULISTA_MENUNKATEGORIAID" FromRole="MenuLista" ToRole="MenunKategoriat" />
+          <NavigationProperty Name="Reseptit" Relationship="Self.FK_MENULISTA_RESEPTIID" FromRole="MenuLista" ToRole="Reseptit" />
+        </EntityType>
+        <EntityType Name="MenunKategoriat">
+          <Key>
+            <PropertyRef Name="MenunKategoriaID" />
+          </Key>
+          <Property Name="MenunKategoriaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenunKategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MenuLista" Relationship="Self.FK_MENULISTA_MENUNKATEGORIAID" FromRole="MenunKategoriat" ToRole="MenuLista" />
+        </EntityType>
+        <EntityType Name="MittayksikkoLista">
+          <Key>
+            <PropertyRef Name="MittayksikkoID" />
+          </Key>
+          <Property Name="MittayksikkoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mittayksikko" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ReseptienAinesosaLista" Relationship="Self.FK_RESEPTIENAINESOSALISTA_MITTAYKSIKKOID" FromRole="MittayksikkoLista" ToRole="ReseptienAinesosaLista" />
+        </EntityType>
+        <EntityType Name="process_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LANG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="food" Relationship="Self.FK_FOOD_PROCESS" FromRole="process_FI" ToRole="food" />
+        </EntityType>
+        <EntityType Name="RaakaAineet">
+          <Key>
+            <PropertyRef Name="RaakaAineID" />
+          </Key>
+          <Property Name="RaakaAineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RaakaAine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KategoriaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kategoriat" Relationship="Self.FK_RAAKAAINEET_KATEGORIAID" FromRole="RaakaAineet" ToRole="Kategoriat" />
+          <NavigationProperty Name="ReseptienAinesosaLista" Relationship="Self.FK_RESEPTIENAINESOSALISTA_RAAKAAINEID" FromRole="RaakaAineet" ToRole="ReseptienAinesosaLista" />
+        </EntityType>
+        <EntityType Name="ReseptienAinesosaLista">
+          <Key>
+            <PropertyRef Name="ReseptiAinesosaListaID" />
+          </Key>
+          <Property Name="ReseptiAinesosaListaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RaakaAineID" Type="Int32" Nullable="false" />
+          <Property Name="Maara" Type="Int32" Nullable="false" />
+          <Property Name="MittayksikkoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MittayksikkoLista" Relationship="Self.FK_RESEPTIENAINESOSALISTA_MITTAYKSIKKOID" FromRole="ReseptienAinesosaLista" ToRole="MittayksikkoLista" />
+          <NavigationProperty Name="RaakaAineet" Relationship="Self.FK_RESEPTIENAINESOSALISTA_RAAKAAINEID" FromRole="ReseptienAinesosaLista" ToRole="RaakaAineet" />
+          <NavigationProperty Name="Reseptit" Relationship="Self.FK_RESEPTIT_RESEPTIAINESOSALISTAID" FromRole="ReseptienAinesosaLista" ToRole="Reseptit" />
+        </EntityType>
+        <EntityType Name="ReseptienVaiheet">
+          <Key>
+            <PropertyRef Name="ReseptiVaiheID" />
+          </Key>
+          <Property Name="ReseptiVaiheID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReseptiVaihe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ReseptienVaiheidenLista" Relationship="Self.FK_RESEPTIENVAIHEIDENLISTA_RESEPTIVAIHEID" FromRole="ReseptienVaiheet" ToRole="ReseptienVaiheidenLista" />
+        </EntityType>
+        <EntityType Name="ReseptienVaiheidenLista">
+          <Key>
+            <PropertyRef Name="RiviID" />
+          </Key>
+          <Property Name="RiviID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReseptiID" Type="Int32" Nullable="false" />
+          <Property Name="ReseptiVaiheID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ReseptienVaiheet" Relationship="Self.FK_RESEPTIENVAIHEIDENLISTA_RESEPTIVAIHEID" FromRole="ReseptienVaiheidenLista" ToRole="ReseptienVaiheet" />
+          <NavigationProperty Name="Reseptit" Relationship="Self.FK_RESEPTIENVAIHEIDENLISTA_RESEPTIID" FromRole="ReseptienVaiheidenLista" ToRole="Reseptit" />
+        </EntityType>
+        <EntityType Name="Reseptit">
+          <Key>
+            <PropertyRef Name="ReseptiID" />
+          </Key>
+          <Property Name="ReseptiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReseptinNimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReseptiVaiheetListaID" Type="Int32" Nullable="false" />
+          <Property Name="ReseptiAinesosaListaID" Type="Int32" Nullable="false" />
+          <Property Name="AnnosKoko" Type="Int32" />
+          <NavigationProperty Name="MenuLista" Relationship="Self.FK_MENULISTA_RESEPTIID" FromRole="Reseptit" ToRole="MenuLista" />
+          <NavigationProperty Name="ReseptienAinesosaLista" Relationship="Self.FK_RESEPTIT_RESEPTIAINESOSALISTAID" FromRole="Reseptit" ToRole="ReseptienAinesosaLista" />
+          <NavigationProperty Name="ReseptienVaiheidenLista" Relationship="Self.FK_RESEPTIENVAIHEIDENLISTA_RESEPTIID" FromRole="Reseptit" ToRole="ReseptienVaiheidenLista" />
+        </EntityType>
+        <EntityType Name="specdiet">
+          <Key>
+            <PropertyRef Name="EDMX_ID" />
+          </Key>
+          <Property Name="EDMX_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FOODID" Type="Int32" Nullable="false" />
+          <Property Name="SPECDIET1" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="food" Relationship="Self.FK_SPECDIET_FOODID" FromRole="specdiet" ToRole="food" />
+          <NavigationProperty Name="specdiet_FI" Relationship="Self.FK_SPECDIET_SPECDIET" FromRole="specdiet" ToRole="specdiet_FI" />
+        </EntityType>
+        <EntityType Name="specdiet_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LANG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="specdiet" Relationship="Self.FK_SPECDIET_SPECDIET" FromRole="specdiet_FI" ToRole="specdiet" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user_component_value">
+          <Key>
+            <PropertyRef Name="EDMX_ID" />
+          </Key>
+          <Property Name="EDMX_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FOODID" Type="Int32" Nullable="false" />
+          <Property Name="EUFDNAME" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BESTLOC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACQTYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="METHTYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="METHIND" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user_eufdname_FI" Relationship="Self.FK_USER_COMPONENT_VALUE_EUFDNAME" FromRole="user_component_value" ToRole="user_eufdname_FI" />
+          <NavigationProperty Name="user_food" Relationship="Self.FK_USER_COMPONENT_VALUE_FOODID" FromRole="user_component_value" ToRole="user_food" />
+        </EntityType>
+        <EntityType Name="user_eufdname_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LANG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user_component_value" Relationship="Self.FK_USER_COMPONENT_VALUE_EUFDNAME" FromRole="user_eufdname_FI" ToRole="user_component_value" />
+        </EntityType>
+        <EntityType Name="user_food">
+          <Key>
+            <PropertyRef Name="FOODID" />
+          </Key>
+          <Property Name="FOODID" Type="Int32" Nullable="false" />
+          <Property Name="FOODNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FOODTYPE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="PROCESS" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EDPORT" Type="Int32" />
+          <Property Name="IGCLASS" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="IGCLASSP" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="FUCLASS" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="FUCLASSP" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user_component_value" Relationship="Self.FK_USER_COMPONENT_VALUE_FOODID" FromRole="user_food" ToRole="user_component_value" />
+          <NavigationProperty Name="user_foodtype_FI" Relationship="Self.FK_USER_FOOD_FOODTYPE" FromRole="user_food" ToRole="user_foodtype_FI" />
+          <NavigationProperty Name="user_fuclass_FI" Relationship="Self.FK_USER_FOOD_FUCLASS" FromRole="user_food" ToRole="user_fuclass_FI" />
+          <NavigationProperty Name="user_fuclass_FI1" Relationship="Self.FK_USER_FOOD_FUCLASSP" FromRole="user_food" ToRole="user_fuclass_FI" />
+          <NavigationProperty Name="user_igclass_FI" Relationship="Self.FK_USER_FOOD_IGCLASS" FromRole="user_food" ToRole="user_igclass_FI" />
+          <NavigationProperty Name="user_igclass_FI1" Relationship="Self.FK_USER_FOOD_IGCLASSP" FromRole="user_food" ToRole="user_igclass_FI" />
+          <NavigationProperty Name="user_process_FI" Relationship="Self.FK_USER_FOOD_PROCESS" FromRole="user_food" ToRole="user_process_FI" />
+          <NavigationProperty Name="user_specdiet" Relationship="Self.FK_USER_SPECDIET_FOODID" FromRole="user_food" ToRole="user_specdiet" />
+        </EntityType>
+        <EntityType Name="user_foodtype_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LANG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user_food" Relationship="Self.FK_USER_FOOD_FOODTYPE" FromRole="user_foodtype_FI" ToRole="user_food" />
+        </EntityType>
+        <EntityType Name="user_fuclass_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LANG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user_food" Relationship="Self.FK_USER_FOOD_FUCLASS" FromRole="user_fuclass_FI" ToRole="user_food" />
+          <NavigationProperty Name="user_food1" Relationship="Self.FK_USER_FOOD_FUCLASSP" FromRole="user_fuclass_FI" ToRole="user_food" />
+        </EntityType>
+        <EntityType Name="user_igclass_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LANG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user_food" Relationship="Self.FK_USER_FOOD_IGCLASS" FromRole="user_igclass_FI" ToRole="user_food" />
+          <NavigationProperty Name="user_food1" Relationship="Self.FK_USER_FOOD_IGCLASSP" FromRole="user_igclass_FI" ToRole="user_food" />
+        </EntityType>
+        <EntityType Name="user_process_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LANG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user_food" Relationship="Self.FK_USER_FOOD_PROCESS" FromRole="user_process_FI" ToRole="user_food" />
+        </EntityType>
+        <EntityType Name="user_specdiet">
+          <Key>
+            <PropertyRef Name="EDMX_ID" />
+          </Key>
+          <Property Name="EDMX_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FOODID" Type="Int32" Nullable="false" />
+          <Property Name="SPECDIET" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user_food" Relationship="Self.FK_USER_SPECDIET_FOODID" FromRole="user_specdiet" ToRole="user_food" />
+          <NavigationProperty Name="user_specdiet_FI" Relationship="Self.FK_USER_SPECDIET_SPECDIET" FromRole="user_specdiet" ToRole="user_specdiet_FI" />
+        </EntityType>
+        <EntityType Name="user_specdiet_FI">
+          <Key>
+            <PropertyRef Name="THSCODE" />
+          </Key>
+          <Property Name="THSCODE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LANG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user_specdiet" Relationship="Self.FK_USER_SPECDIET_SPECDIET" FromRole="user_specdiet_FI" ToRole="user_specdiet" />
+        </EntityType>
+        <Association Name="FK_COMPONENT_VALUE_EUFDNAME">
+          <End Role="eufdname_FI" Type="Self.eufdname_FI" Multiplicity="1" />
+          <End Role="component_value" Type="Self.component_value" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eufdname_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="component_value">
+              <PropertyRef Name="EUFDNAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPONENT_VALUE_FOODID">
+          <End Role="food" Type="Self.food" Multiplicity="1" />
+          <End Role="component_value" Type="Self.component_value" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="food">
+              <PropertyRef Name="FOODID" />
+            </Principal>
+            <Dependent Role="component_value">
+              <PropertyRef Name="FOODID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOOD_FOODTYPE">
+          <End Role="foodtype_FI" Type="Self.foodtype_FI" Multiplicity="0..1" />
+          <End Role="food" Type="Self.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="foodtype_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="FOODTYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOOD_FUCLASS">
+          <End Role="fuclass_FI" Type="Self.fuclass_FI" Multiplicity="0..1" />
+          <End Role="food" Type="Self.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fuclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="FUCLASS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOOD_FUCLASSP">
+          <End Role="fuclass_FI" Type="Self.fuclass_FI" Multiplicity="0..1" />
+          <End Role="food" Type="Self.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fuclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="FUCLASSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOOD_IGCLASS">
+          <End Role="igclass_FI" Type="Self.igclass_FI" Multiplicity="0..1" />
+          <End Role="food" Type="Self.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="igclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="IGCLASS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOOD_IGCLASSP">
+          <End Role="igclass_FI" Type="Self.igclass_FI" Multiplicity="0..1" />
+          <End Role="food" Type="Self.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="igclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="IGCLASSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOOD_PROCESS">
+          <End Role="process_FI" Type="Self.process_FI" Multiplicity="0..1" />
+          <End Role="food" Type="Self.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="process_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="PROCESS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPECDIET_FOODID">
+          <End Role="food" Type="Self.food" Multiplicity="1" />
+          <End Role="specdiet" Type="Self.specdiet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="food">
+              <PropertyRef Name="FOODID" />
+            </Principal>
+            <Dependent Role="specdiet">
+              <PropertyRef Name="FOODID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RAAKAAINEET_KATEGORIAID">
+          <End Role="Kategoriat" Type="Self.Kategoriat" Multiplicity="1" />
+          <End Role="RaakaAineet" Type="Self.RaakaAineet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoriat">
+              <PropertyRef Name="KategoriaID" />
+            </Principal>
+            <Dependent Role="RaakaAineet">
+              <PropertyRef Name="KategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENULISTA_MENUNKATEGORIAID">
+          <End Role="MenunKategoriat" Type="Self.MenunKategoriat" Multiplicity="0..1" />
+          <End Role="MenuLista" Type="Self.MenuLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenunKategoriat">
+              <PropertyRef Name="MenunKategoriaID" />
+            </Principal>
+            <Dependent Role="MenuLista">
+              <PropertyRef Name="MenunKategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENULISTA_RESEPTIID">
+          <End Role="Reseptit" Type="Self.Reseptit" Multiplicity="1" />
+          <End Role="MenuLista" Type="Self.MenuLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reseptit">
+              <PropertyRef Name="ReseptiID" />
+            </Principal>
+            <Dependent Role="MenuLista">
+              <PropertyRef Name="ReseptiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESEPTIENAINESOSALISTA_MITTAYKSIKKOID">
+          <End Role="MittayksikkoLista" Type="Self.MittayksikkoLista" Multiplicity="1" />
+          <End Role="ReseptienAinesosaLista" Type="Self.ReseptienAinesosaLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MittayksikkoLista">
+              <PropertyRef Name="MittayksikkoID" />
+            </Principal>
+            <Dependent Role="ReseptienAinesosaLista">
+              <PropertyRef Name="MittayksikkoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESEPTIENAINESOSALISTA_RAAKAAINEID">
+          <End Role="RaakaAineet" Type="Self.RaakaAineet" Multiplicity="1" />
+          <End Role="ReseptienAinesosaLista" Type="Self.ReseptienAinesosaLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RaakaAineet">
+              <PropertyRef Name="RaakaAineID" />
+            </Principal>
+            <Dependent Role="ReseptienAinesosaLista">
+              <PropertyRef Name="RaakaAineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESEPTIT_RESEPTIAINESOSALISTAID">
+          <End Role="ReseptienAinesosaLista" Type="Self.ReseptienAinesosaLista" Multiplicity="1" />
+          <End Role="Reseptit" Type="Self.Reseptit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReseptienAinesosaLista">
+              <PropertyRef Name="ReseptiAinesosaListaID" />
+            </Principal>
+            <Dependent Role="Reseptit">
+              <PropertyRef Name="ReseptiAinesosaListaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESEPTIENVAIHEIDENLISTA_RESEPTIVAIHEID">
+          <End Role="ReseptienVaiheet" Type="Self.ReseptienVaiheet" Multiplicity="1" />
+          <End Role="ReseptienVaiheidenLista" Type="Self.ReseptienVaiheidenLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReseptienVaiheet">
+              <PropertyRef Name="ReseptiVaiheID" />
+            </Principal>
+            <Dependent Role="ReseptienVaiheidenLista">
+              <PropertyRef Name="ReseptiVaiheID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESEPTIENVAIHEIDENLISTA_RESEPTIID">
+          <End Role="Reseptit" Type="Self.Reseptit" Multiplicity="1" />
+          <End Role="ReseptienVaiheidenLista" Type="Self.ReseptienVaiheidenLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reseptit">
+              <PropertyRef Name="ReseptiID" />
+            </Principal>
+            <Dependent Role="ReseptienVaiheidenLista">
+              <PropertyRef Name="ReseptiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPECDIET_SPECDIET">
+          <End Role="specdiet_FI" Type="Self.specdiet_FI" Multiplicity="1" />
+          <End Role="specdiet" Type="Self.specdiet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="specdiet_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="specdiet">
+              <PropertyRef Name="SPECDIET1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_COMPONENT_VALUE_EUFDNAME">
+          <End Role="user_eufdname_FI" Type="Self.user_eufdname_FI" Multiplicity="1" />
+          <End Role="user_component_value" Type="Self.user_component_value" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_eufdname_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_component_value">
+              <PropertyRef Name="EUFDNAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_COMPONENT_VALUE_FOODID">
+          <End Role="user_food" Type="Self.user_food" Multiplicity="1" />
+          <End Role="user_component_value" Type="Self.user_component_value" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_food">
+              <PropertyRef Name="FOODID" />
+            </Principal>
+            <Dependent Role="user_component_value">
+              <PropertyRef Name="FOODID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_FOOD_FOODTYPE">
+          <End Role="user_foodtype_FI" Type="Self.user_foodtype_FI" Multiplicity="0..1" />
+          <End Role="user_food" Type="Self.user_food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_foodtype_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_food">
+              <PropertyRef Name="FOODTYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_FOOD_FUCLASS">
+          <End Role="user_fuclass_FI" Type="Self.user_fuclass_FI" Multiplicity="0..1" />
+          <End Role="user_food" Type="Self.user_food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_fuclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_food">
+              <PropertyRef Name="FUCLASS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_FOOD_FUCLASSP">
+          <End Role="user_fuclass_FI" Type="Self.user_fuclass_FI" Multiplicity="0..1" />
+          <End Role="user_food" Type="Self.user_food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_fuclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_food">
+              <PropertyRef Name="FUCLASSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_FOOD_IGCLASS">
+          <End Role="user_igclass_FI" Type="Self.user_igclass_FI" Multiplicity="0..1" />
+          <End Role="user_food" Type="Self.user_food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_igclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_food">
+              <PropertyRef Name="IGCLASS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_FOOD_IGCLASSP">
+          <End Role="user_igclass_FI" Type="Self.user_igclass_FI" Multiplicity="0..1" />
+          <End Role="user_food" Type="Self.user_food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_igclass_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_food">
+              <PropertyRef Name="IGCLASSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_FOOD_PROCESS">
+          <End Role="user_process_FI" Type="Self.user_process_FI" Multiplicity="0..1" />
+          <End Role="user_food" Type="Self.user_food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_process_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_food">
+              <PropertyRef Name="PROCESS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_SPECDIET_FOODID">
+          <End Role="user_food" Type="Self.user_food" Multiplicity="1" />
+          <End Role="user_specdiet" Type="Self.user_specdiet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_food">
+              <PropertyRef Name="FOODID" />
+            </Principal>
+            <Dependent Role="user_specdiet">
+              <PropertyRef Name="FOODID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_SPECDIET_SPECDIET">
+          <End Role="user_specdiet_FI" Type="Self.user_specdiet_FI" Multiplicity="1" />
+          <End Role="user_specdiet" Type="Self.user_specdiet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_specdiet_FI">
+              <PropertyRef Name="THSCODE" />
+            </Principal>
+            <Dependent Role="user_specdiet">
+              <PropertyRef Name="SPECDIET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ReseptiHakuEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="component_value" EntityType="Self.component_value" />
+          <EntitySet Name="eufdname_FI" EntityType="Self.eufdname_FI" />
+          <EntitySet Name="food" EntityType="Self.food" />
+          <EntitySet Name="foodtype_FI" EntityType="Self.foodtype_FI" />
+          <EntitySet Name="fuclass_FI" EntityType="Self.fuclass_FI" />
+          <EntitySet Name="igclass_FI" EntityType="Self.igclass_FI" />
+          <EntitySet Name="Kategoriat" EntityType="Self.Kategoriat" />
+          <EntitySet Name="MenuLista" EntityType="Self.MenuLista" />
+          <EntitySet Name="MenunKategoriat" EntityType="Self.MenunKategoriat" />
+          <EntitySet Name="MittayksikkoLista" EntityType="Self.MittayksikkoLista" />
+          <EntitySet Name="process_FI" EntityType="Self.process_FI" />
+          <EntitySet Name="RaakaAineet" EntityType="Self.RaakaAineet" />
+          <EntitySet Name="ReseptienAinesosaLista" EntityType="Self.ReseptienAinesosaLista" />
+          <EntitySet Name="ReseptienVaiheet" EntityType="Self.ReseptienVaiheet" />
+          <EntitySet Name="ReseptienVaiheidenLista" EntityType="Self.ReseptienVaiheidenLista" />
+          <EntitySet Name="Reseptit" EntityType="Self.Reseptit" />
+          <EntitySet Name="specdiet" EntityType="Self.specdiet" />
+          <EntitySet Name="specdiet_FI" EntityType="Self.specdiet_FI" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="user_component_value" EntityType="Self.user_component_value" />
+          <EntitySet Name="user_eufdname_FI" EntityType="Self.user_eufdname_FI" />
+          <EntitySet Name="user_food" EntityType="Self.user_food" />
+          <EntitySet Name="user_foodtype_FI" EntityType="Self.user_foodtype_FI" />
+          <EntitySet Name="user_fuclass_FI" EntityType="Self.user_fuclass_FI" />
+          <EntitySet Name="user_igclass_FI" EntityType="Self.user_igclass_FI" />
+          <EntitySet Name="user_process_FI" EntityType="Self.user_process_FI" />
+          <EntitySet Name="user_specdiet" EntityType="Self.user_specdiet" />
+          <EntitySet Name="user_specdiet_FI" EntityType="Self.user_specdiet_FI" />
+          <AssociationSet Name="FK_COMPONENT_VALUE_EUFDNAME" Association="Self.FK_COMPONENT_VALUE_EUFDNAME">
+            <End Role="eufdname_FI" EntitySet="eufdname_FI" />
+            <End Role="component_value" EntitySet="component_value" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPONENT_VALUE_FOODID" Association="Self.FK_COMPONENT_VALUE_FOODID">
+            <End Role="food" EntitySet="food" />
+            <End Role="component_value" EntitySet="component_value" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOOD_FOODTYPE" Association="Self.FK_FOOD_FOODTYPE">
+            <End Role="foodtype_FI" EntitySet="foodtype_FI" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOOD_FUCLASS" Association="Self.FK_FOOD_FUCLASS">
+            <End Role="fuclass_FI" EntitySet="fuclass_FI" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOOD_FUCLASSP" Association="Self.FK_FOOD_FUCLASSP">
+            <End Role="fuclass_FI" EntitySet="fuclass_FI" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOOD_IGCLASS" Association="Self.FK_FOOD_IGCLASS">
+            <End Role="igclass_FI" EntitySet="igclass_FI" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOOD_IGCLASSP" Association="Self.FK_FOOD_IGCLASSP">
+            <End Role="igclass_FI" EntitySet="igclass_FI" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOOD_PROCESS" Association="Self.FK_FOOD_PROCESS">
+            <End Role="process_FI" EntitySet="process_FI" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPECDIET_FOODID" Association="Self.FK_SPECDIET_FOODID">
+            <End Role="food" EntitySet="food" />
+            <End Role="specdiet" EntitySet="specdiet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RAAKAAINEET_KATEGORIAID" Association="Self.FK_RAAKAAINEET_KATEGORIAID">
+            <End Role="Kategoriat" EntitySet="Kategoriat" />
+            <End Role="RaakaAineet" EntitySet="RaakaAineet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENULISTA_MENUNKATEGORIAID" Association="Self.FK_MENULISTA_MENUNKATEGORIAID">
+            <End Role="MenunKategoriat" EntitySet="MenunKategoriat" />
+            <End Role="MenuLista" EntitySet="MenuLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENULISTA_RESEPTIID" Association="Self.FK_MENULISTA_RESEPTIID">
+            <End Role="Reseptit" EntitySet="Reseptit" />
+            <End Role="MenuLista" EntitySet="MenuLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESEPTIENAINESOSALISTA_MITTAYKSIKKOID" Association="Self.FK_RESEPTIENAINESOSALISTA_MITTAYKSIKKOID">
+            <End Role="MittayksikkoLista" EntitySet="MittayksikkoLista" />
+            <End Role="ReseptienAinesosaLista" EntitySet="ReseptienAinesosaLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESEPTIENAINESOSALISTA_RAAKAAINEID" Association="Self.FK_RESEPTIENAINESOSALISTA_RAAKAAINEID">
+            <End Role="RaakaAineet" EntitySet="RaakaAineet" />
+            <End Role="ReseptienAinesosaLista" EntitySet="ReseptienAinesosaLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESEPTIT_RESEPTIAINESOSALISTAID" Association="Self.FK_RESEPTIT_RESEPTIAINESOSALISTAID">
+            <End Role="ReseptienAinesosaLista" EntitySet="ReseptienAinesosaLista" />
+            <End Role="Reseptit" EntitySet="Reseptit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESEPTIENVAIHEIDENLISTA_RESEPTIVAIHEID" Association="Self.FK_RESEPTIENVAIHEIDENLISTA_RESEPTIVAIHEID">
+            <End Role="ReseptienVaiheet" EntitySet="ReseptienVaiheet" />
+            <End Role="ReseptienVaiheidenLista" EntitySet="ReseptienVaiheidenLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESEPTIENVAIHEIDENLISTA_RESEPTIID" Association="Self.FK_RESEPTIENVAIHEIDENLISTA_RESEPTIID">
+            <End Role="Reseptit" EntitySet="Reseptit" />
+            <End Role="ReseptienVaiheidenLista" EntitySet="ReseptienVaiheidenLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPECDIET_SPECDIET" Association="Self.FK_SPECDIET_SPECDIET">
+            <End Role="specdiet_FI" EntitySet="specdiet_FI" />
+            <End Role="specdiet" EntitySet="specdiet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_COMPONENT_VALUE_EUFDNAME" Association="Self.FK_USER_COMPONENT_VALUE_EUFDNAME">
+            <End Role="user_eufdname_FI" EntitySet="user_eufdname_FI" />
+            <End Role="user_component_value" EntitySet="user_component_value" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_COMPONENT_VALUE_FOODID" Association="Self.FK_USER_COMPONENT_VALUE_FOODID">
+            <End Role="user_food" EntitySet="user_food" />
+            <End Role="user_component_value" EntitySet="user_component_value" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_FOOD_FOODTYPE" Association="Self.FK_USER_FOOD_FOODTYPE">
+            <End Role="user_foodtype_FI" EntitySet="user_foodtype_FI" />
+            <End Role="user_food" EntitySet="user_food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_FOOD_FUCLASS" Association="Self.FK_USER_FOOD_FUCLASS">
+            <End Role="user_fuclass_FI" EntitySet="user_fuclass_FI" />
+            <End Role="user_food" EntitySet="user_food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_FOOD_FUCLASSP" Association="Self.FK_USER_FOOD_FUCLASSP">
+            <End Role="user_fuclass_FI" EntitySet="user_fuclass_FI" />
+            <End Role="user_food" EntitySet="user_food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_FOOD_IGCLASS" Association="Self.FK_USER_FOOD_IGCLASS">
+            <End Role="user_igclass_FI" EntitySet="user_igclass_FI" />
+            <End Role="user_food" EntitySet="user_food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_FOOD_IGCLASSP" Association="Self.FK_USER_FOOD_IGCLASSP">
+            <End Role="user_igclass_FI" EntitySet="user_igclass_FI" />
+            <End Role="user_food" EntitySet="user_food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_FOOD_PROCESS" Association="Self.FK_USER_FOOD_PROCESS">
+            <End Role="user_process_FI" EntitySet="user_process_FI" />
+            <End Role="user_food" EntitySet="user_food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_SPECDIET_FOODID" Association="Self.FK_USER_SPECDIET_FOODID">
+            <End Role="user_food" EntitySet="user_food" />
+            <End Role="user_specdiet" EntitySet="user_specdiet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_SPECDIET_SPECDIET" Association="Self.FK_USER_SPECDIET_SPECDIET">
+            <End Role="user_specdiet_FI" EntitySet="user_specdiet_FI" />
+            <End Role="user_specdiet" EntitySet="user_specdiet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ReseptiHakuModelStoreContainer" CdmEntityContainer="ReseptiHakuEntities">
+          <EntitySetMapping Name="component_value">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.component_value">
+              <MappingFragment StoreEntitySet="component_value">
+                <ScalarProperty Name="EDMX_ID" ColumnName="EDMX_ID" />
+                <ScalarProperty Name="FOODID" ColumnName="FOODID" />
+                <ScalarProperty Name="EUFDNAME" ColumnName="EUFDNAME" />
+                <ScalarProperty Name="BESTLOC" ColumnName="BESTLOC" />
+                <ScalarProperty Name="ACQTYPE" ColumnName="ACQTYPE" />
+                <ScalarProperty Name="METHTYPE" ColumnName="METHTYPE" />
+                <ScalarProperty Name="METHIND" ColumnName="METHIND" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eufdname_FI">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.eufdname_FI">
+              <MappingFragment StoreEntitySet="eufdname_FI">
+                <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="food">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.food">
+              <MappingFragment StoreEntitySet="food">
+                <ScalarProperty Name="FOODID" ColumnName="FOODID" />
+                <ScalarProperty Name="FOODNAME" ColumnName="FOODNAME" />
+                <ScalarProperty Name="FOODTYPE" ColumnName="FOODTYPE" />
+                <ScalarProperty Name="PROCESS" ColumnName="PROCESS" />
+                <ScalarProperty Name="EDPORT" ColumnName="EDPORT" />
+                <ScalarProperty Name="IGCLASS" ColumnName="IGCLASS" />
+                <ScalarProperty Name="IGCLASSP" ColumnName="IGCLASSP" />
+                <ScalarProperty Name="FUCLASS" ColumnName="FUCLASS" />
+                <ScalarProperty Name="FUCLASSP" ColumnName="FUCLASSP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="foodtype_FI">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.foodtype_FI">
+              <MappingFragment StoreEntitySet="foodtype_FI">
+                <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fuclass_FI">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.fuclass_FI">
+              <MappingFragment StoreEntitySet="fuclass_FI">
+                <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="igclass_FI">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.igclass_FI">
+              <MappingFragment StoreEntitySet="igclass_FI">
+                <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategoriat">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.Kategoriat">
+              <MappingFragment StoreEntitySet="Kategoriat">
+                <ScalarProperty Name="KategoriaID" ColumnName="KategoriaID" />
+                <ScalarProperty Name="Kategoria" ColumnName="Kategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuLista">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.MenuLista">
+              <MappingFragment StoreEntitySet="MenuLista">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="MenunNimi" ColumnName="MenunNimi" />
+                <ScalarProperty Name="ReseptiID" ColumnName="ReseptiID" />
+                <ScalarProperty Name="MenunKategoriaID" ColumnName="MenunKategoriaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenunKategoriat">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.MenunKategoriat">
+              <MappingFragment StoreEntitySet="MenunKategoriat">
+                <ScalarProperty Name="MenunKategoriaID" ColumnName="MenunKategoriaID" />
+                <ScalarProperty Name="MenunKategoria" ColumnName="MenunKategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MittayksikkoLista">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.MittayksikkoLista">
+              <MappingFragment StoreEntitySet="MittayksikkoLista">
+                <ScalarProperty Name="MittayksikkoID" ColumnName="MittayksikkoID" />
+                <ScalarProperty Name="Mittayksikko" ColumnName="Mittayksikko" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="process_FI">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.process_FI">
+              <MappingFragment StoreEntitySet="process_FI">
+                <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RaakaAineet">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.RaakaAineet">
+              <MappingFragment StoreEntitySet="RaakaAineet">
+                <ScalarProperty Name="RaakaAineID" ColumnName="RaakaAineID" />
+                <ScalarProperty Name="RaakaAine" ColumnName="RaakaAine" />
+                <ScalarProperty Name="KategoriaID" ColumnName="KategoriaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReseptienAinesosaLista">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.ReseptienAinesosaLista">
+              <MappingFragment StoreEntitySet="ReseptienAinesosaLista">
+                <ScalarProperty Name="ReseptiAinesosaListaID" ColumnName="ReseptiAinesosaListaID" />
+                <ScalarProperty Name="RaakaAineID" ColumnName="RaakaAineID" />
+                <ScalarProperty Name="Maara" ColumnName="Maara" />
+                <ScalarProperty Name="MittayksikkoID" ColumnName="MittayksikkoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReseptienVaiheet">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.ReseptienVaiheet">
+              <MappingFragment StoreEntitySet="ReseptienVaiheet">
+                <ScalarProperty Name="ReseptiVaiheID" ColumnName="ReseptiVaiheID" />
+                <ScalarProperty Name="ReseptiVaihe" ColumnName="ReseptiVaihe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReseptienVaiheidenLista">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.ReseptienVaiheidenLista">
+              <MappingFragment StoreEntitySet="ReseptienVaiheidenLista">
+                <ScalarProperty Name="RiviID" ColumnName="RiviID" />
+                <ScalarProperty Name="ReseptiID" ColumnName="ReseptiID" />
+                <ScalarProperty Name="ReseptiVaiheID" ColumnName="ReseptiVaiheID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reseptit">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.Reseptit">
+              <MappingFragment StoreEntitySet="Reseptit">
+                <ScalarProperty Name="ReseptiID" ColumnName="ReseptiID" />
+                <ScalarProperty Name="ReseptinNimi" ColumnName="ReseptinNimi" />
+                <ScalarProperty Name="ReseptiVaiheetListaID" ColumnName="ReseptiVaiheetListaID" />
+                <ScalarProperty Name="ReseptiAinesosaListaID" ColumnName="ReseptiAinesosaListaID" />
+                <ScalarProperty Name="AnnosKoko" ColumnName="AnnosKoko" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="specdiet">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.specdiet">
+              <MappingFragment StoreEntitySet="specdiet">
+                <ScalarProperty Name="EDMX_ID" ColumnName="EDMX_ID" />
+                <ScalarProperty Name="FOODID" ColumnName="FOODID" />
+                <ScalarProperty Name="SPECDIET1" ColumnName="SPECDIET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="specdiet_FI">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.specdiet_FI">
+              <MappingFragment StoreEntitySet="specdiet_FI">
+                <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_component_value">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.user_component_value">
+              <MappingFragment StoreEntitySet="user_component_value">
+                <ScalarProperty Name="EDMX_ID" ColumnName="EDMX_ID" />
+                <ScalarProperty Name="FOODID" ColumnName="FOODID" />
+                <ScalarProperty Name="EUFDNAME" ColumnName="EUFDNAME" />
+                <ScalarProperty Name="BESTLOC" ColumnName="BESTLOC" />
+                <ScalarProperty Name="ACQTYPE" ColumnName="ACQTYPE" />
+                <ScalarProperty Name="METHTYPE" ColumnName="METHTYPE" />
+                <ScalarProperty Name="METHIND" ColumnName="METHIND" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_eufdname_FI">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.user_eufdname_FI">
+              <MappingFragment StoreEntitySet="user_eufdname_FI">
+                <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_food">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.user_food">
+              <MappingFragment StoreEntitySet="user_food">
+                <ScalarProperty Name="FOODID" ColumnName="FOODID" />
+                <ScalarProperty Name="FOODNAME" ColumnName="FOODNAME" />
+                <ScalarProperty Name="FOODTYPE" ColumnName="FOODTYPE" />
+                <ScalarProperty Name="PROCESS" ColumnName="PROCESS" />
+                <ScalarProperty Name="EDPORT" ColumnName="EDPORT" />
+                <ScalarProperty Name="IGCLASS" ColumnName="IGCLASS" />
+                <ScalarProperty Name="IGCLASSP" ColumnName="IGCLASSP" />
+                <ScalarProperty Name="FUCLASS" ColumnName="FUCLASS" />
+                <ScalarProperty Name="FUCLASSP" ColumnName="FUCLASSP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_foodtype_FI">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.user_foodtype_FI">
+              <MappingFragment StoreEntitySet="user_foodtype_FI">
+                <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_fuclass_FI">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.user_fuclass_FI">
+              <MappingFragment StoreEntitySet="user_fuclass_FI">
+                <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_igclass_FI">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.user_igclass_FI">
+              <MappingFragment StoreEntitySet="user_igclass_FI">
+                <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_process_FI">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.user_process_FI">
+              <MappingFragment StoreEntitySet="user_process_FI">
+                <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_specdiet">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.user_specdiet">
+              <MappingFragment StoreEntitySet="user_specdiet">
+                <ScalarProperty Name="EDMX_ID" ColumnName="EDMX_ID" />
+                <ScalarProperty Name="FOODID" ColumnName="FOODID" />
+                <ScalarProperty Name="SPECDIET" ColumnName="SPECDIET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_specdiet_FI">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.user_specdiet_FI">
+              <MappingFragment StoreEntitySet="user_specdiet_FI">
+                <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
+                <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
+                <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
