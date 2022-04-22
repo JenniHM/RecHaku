@@ -1,0 +1,42 @@
+﻿@model ReseptiHaku.Models.MenuLista
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MenuLista</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MenunNimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenunNimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenunKategoriat.MenunKategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenunKategoriat.MenunKategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reseptit.ReseptinNimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reseptit.ReseptinNimi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MenuID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,42 @@
+﻿@model ReseptiHaku.Models.ReseptienAinesosaLista
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ReseptienAinesosaLista</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Maara)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maara)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MittayksikkoLista.Mittayksikko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MittayksikkoLista.Mittayksikko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaakaAineet.RaakaAine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaakaAineet.RaakaAine)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ReseptiAinesosaListaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

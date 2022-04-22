@@ -119,7 +119,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KategoriatController.cs" />
+    <Compile Include="Controllers\MenuListaController.cs" />
+    <Compile Include="Controllers\MenunKategoriatController.cs" />
+    <Compile Include="Controllers\MittayksikkoListaController.cs" />
     <Compile Include="Controllers\RaakaAineetController.cs" />
+    <Compile Include="Controllers\ReseptienAinesosaListaController.cs" />
+    <Compile Include="Controllers\ReseptienVaiheetController.cs" />
+    <Compile Include="Controllers\ReseptienVaiheidenListaController.cs" />
+    <Compile Include="Controllers\ReseptitController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -299,6 +307,46 @@
     <Content Include="Views\RaakaAineet\Details.cshtml" />
     <Content Include="Views\RaakaAineet\Edit.cshtml" />
     <Content Include="Views\RaakaAineet\Index.cshtml" />
+    <Content Include="Views\Kategoriat\Create.cshtml" />
+    <Content Include="Views\Kategoriat\Delete.cshtml" />
+    <Content Include="Views\Kategoriat\Details.cshtml" />
+    <Content Include="Views\Kategoriat\Edit.cshtml" />
+    <Content Include="Views\Kategoriat\Index.cshtml" />
+    <Content Include="Views\Reseptit\Create.cshtml" />
+    <Content Include="Views\Reseptit\Delete.cshtml" />
+    <Content Include="Views\Reseptit\Details.cshtml" />
+    <Content Include="Views\Reseptit\Edit.cshtml" />
+    <Content Include="Views\Reseptit\Index.cshtml" />
+    <Content Include="Views\ReseptienVaiheet\Create.cshtml" />
+    <Content Include="Views\ReseptienVaiheet\Delete.cshtml" />
+    <Content Include="Views\ReseptienVaiheet\Details.cshtml" />
+    <Content Include="Views\ReseptienVaiheet\Edit.cshtml" />
+    <Content Include="Views\ReseptienVaiheet\Index.cshtml" />
+    <Content Include="Views\ReseptienVaiheidenLista\Create.cshtml" />
+    <Content Include="Views\ReseptienVaiheidenLista\Delete.cshtml" />
+    <Content Include="Views\ReseptienVaiheidenLista\Details.cshtml" />
+    <Content Include="Views\ReseptienVaiheidenLista\Edit.cshtml" />
+    <Content Include="Views\ReseptienVaiheidenLista\Index.cshtml" />
+    <Content Include="Views\ReseptienAinesosaLista\Create.cshtml" />
+    <Content Include="Views\ReseptienAinesosaLista\Delete.cshtml" />
+    <Content Include="Views\ReseptienAinesosaLista\Details.cshtml" />
+    <Content Include="Views\ReseptienAinesosaLista\Edit.cshtml" />
+    <Content Include="Views\ReseptienAinesosaLista\Index.cshtml" />
+    <Content Include="Views\MittayksikkoLista\Create.cshtml" />
+    <Content Include="Views\MittayksikkoLista\Delete.cshtml" />
+    <Content Include="Views\MittayksikkoLista\Details.cshtml" />
+    <Content Include="Views\MittayksikkoLista\Edit.cshtml" />
+    <Content Include="Views\MittayksikkoLista\Index.cshtml" />
+    <Content Include="Views\MenuLista\Create.cshtml" />
+    <Content Include="Views\MenuLista\Delete.cshtml" />
+    <Content Include="Views\MenuLista\Details.cshtml" />
+    <Content Include="Views\MenuLista\Edit.cshtml" />
+    <Content Include="Views\MenuLista\Index.cshtml" />
+    <Content Include="Views\MenunKategoriat\Create.cshtml" />
+    <Content Include="Views\MenunKategoriat\Delete.cshtml" />
+    <Content Include="Views\MenunKategoriat\Details.cshtml" />
+    <Content Include="Views\MenunKategoriat\Edit.cshtml" />
+    <Content Include="Views\MenunKategoriat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
