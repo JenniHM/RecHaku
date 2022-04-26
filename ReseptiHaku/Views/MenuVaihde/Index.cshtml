@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ReseptiHaku.Models.MenuVaihde>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MenuLista.MenunNimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenunKategoriat.MenunKategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reseptit.ReseptinNimi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenuLista.MenunNimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenunKategoriat.MenunKategoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reseptit.ReseptinNimi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RiviID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RiviID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RiviID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,88 @@
+﻿@model ReseptiHaku.Models.food
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>food</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FOODNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FOODNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EDPORT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EDPORT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foodtype_FI.DESCRIPT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foodtype_FI.DESCRIPT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fuclass_FI.DESCRIPT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fuclass_FI.DESCRIPT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fuclass_FI1.DESCRIPT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fuclass_FI1.DESCRIPT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.igclass_FI.DESCRIPT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.igclass_FI.DESCRIPT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.igclass_FI1.DESCRIPT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.igclass_FI1.DESCRIPT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.process_FI.DESCRIPT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.process_FI.DESCRIPT)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

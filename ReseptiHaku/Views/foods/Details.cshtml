@@ -1,0 +1,82 @@
+﻿@model ReseptiHaku.Models.food
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>food</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FOODNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FOODNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EDPORT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EDPORT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foodtype_FI.DESCRIPT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foodtype_FI.DESCRIPT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fuclass_FI.DESCRIPT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fuclass_FI.DESCRIPT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fuclass_FI1.DESCRIPT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fuclass_FI1.DESCRIPT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.igclass_FI.DESCRIPT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.igclass_FI.DESCRIPT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.igclass_FI1.DESCRIPT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.igclass_FI1.DESCRIPT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.process_FI.DESCRIPT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.process_FI.DESCRIPT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FOODID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

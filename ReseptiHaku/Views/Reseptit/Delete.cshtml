@@ -1,0 +1,40 @@
+﻿@model ReseptiHaku.Models.Reseptit
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Reseptit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReseptinNimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReseptinNimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnnosKoko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnnosKoko)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
