@@ -4,7 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Reseptien vaiheiden vaihde - [dbo].[ReseptienVaiheidenLista]</h2>
+
+<p>"Vaihde" - taulu, joka toimii relaatiotietokantojen normalisointisääntöjen mukaisena kytköksenä Reseptien ja Reseptien vaiheiden välillä.</p>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -20,20 +22,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReseptienVaiheet.ReseptiVaihe)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Reseptit.ReseptinNimi)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RiviID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RiviID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RiviID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReseptienVaiheet.ReseptiVaihe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reseptit.ReseptinNimi)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RiviID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RiviID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RiviID })
+            </td>
+        </tr>
+    }
 
 </table>
