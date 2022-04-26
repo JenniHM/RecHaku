@@ -122,6 +122,111 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\component_value.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\eufdname_FI.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\food.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\foodtype_FI.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\fuclass_FI.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\igclass_FI.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kategoriat.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MenuLista.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MenunKategoriat.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MenuVaihde.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MittayksikkoLista.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\process_FI.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RaakaAineet.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReseptienAinesosaLista.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReseptienAinesosienVaihde.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReseptienVaiheet.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReseptienVaiheidenLista.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReseptiHakuModel2.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReseptiHakuModel2.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReseptiHakuModel2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReseptiHakuModel2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReseptiHakuModel2.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reseptit.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\specdiet.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\specdiet_FI.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_component_value.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_eufdname_FI.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_food.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_foodtype_FI.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_fuclass_FI.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_igclass_FI.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_process_FI.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_specdiet.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_specdiet_FI.cs">
+      <DependentUpon>ReseptiHakuModel2.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,12 +251,29 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\ReseptiHakuModel2.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ReseptiHakuModel2.edmx</DependentUpon>
+      <LastGenOutput>ReseptiHakuModel2.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ReseptiHakuModel2.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ReseptiHakuModel2.edmx</DependentUpon>
+      <LastGenOutput>ReseptiHakuModel2.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\ReseptiHakuModel2.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ReseptiHakuModel2.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ReseptiHakuModel2.edmx.diagram">
+      <DependentUpon>ReseptiHakuModel2.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -180,7 +302,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

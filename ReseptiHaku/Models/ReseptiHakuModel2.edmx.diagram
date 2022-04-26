@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="300b7c268fc04ee3bb64978337fdacd6" Name="Diagram1">
+        <EntityTypeShape EntityType="ReseptiHakuModel.component_value" Width="1.5" PointX="13.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.eufdname_FI" Width="1.5" PointX="11.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.food" Width="1.5" PointX="11.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.foodtype_FI" Width="1.5" PointX="9" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.fuclass_FI" Width="1.5" PointX="9" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.igclass_FI" Width="1.5" PointX="9" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.Kategoriat" Width="1.5" PointX="1.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.MenuLista" Width="1.5" PointX="3" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.MenunKategoriat" Width="1.5" PointX="3" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.MenuVaihde" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.MittayksikkoLista" Width="1.5" PointX="0.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.process_FI" Width="1.5" PointX="9" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.RaakaAineet" Width="1.5" PointX="0.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.ReseptienAinesosaLista" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.ReseptienAinesosienVaihde" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.ReseptienVaiheet" Width="1.5" PointX="3" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.ReseptienVaiheidenLista" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.Reseptit" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.specdiet" Width="1.5" PointX="16.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.specdiet_FI" Width="1.5" PointX="14.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.sysdiagrams" Width="1.5" PointX="11" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.user_component_value" Width="1.5" PointX="5.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.user_eufdname_FI" Width="1.5" PointX="3.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.user_food" Width="1.5" PointX="3.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.user_foodtype_FI" Width="1.5" PointX="1" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.user_fuclass_FI" Width="1.5" PointX="1" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.user_igclass_FI" Width="1.5" PointX="1" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.user_process_FI" Width="1.5" PointX="1" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.user_specdiet" Width="1.5" PointX="8.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.user_specdiet_FI" Width="1.5" PointX="6.25" PointY="8.375" IsExpanded="true" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_COMPONENT_VALUE_EUFDNAME" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_COMPONENT_VALUE_FOODID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_FOOD_FOODTYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_FOOD_FUCLASS" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_FOOD_FUCLASSP" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_FOOD_IGCLASS" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_FOOD_IGCLASSP" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_FOOD_PROCESS" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_SPECDIET_FOODID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_RAAKAAINEET_KATEGORIAID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_MENUVAIHDE_MENUID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_MENUVAIHDE_MENUNKATEGORIAID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_MENUVAIHDE_RESEPTIID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_RESEPTIENAINESOSALISTA_MITTAYKSIKKOID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_RESEPTIENAINESOSALISTA_RAAKAAINEID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_RESEPTIENAINESOSIENVAIHDE_RESEPTIAINESOSALISTAID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_RESEPTIENAINESOSIENVAIHDE_RESEPTIID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_RESEPTIENVAIHEIDENLISTA_RESEPTIVAIHEID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_RESEPTIENVAIHEIDENLISTA_RESEPTIID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_SPECDIET_SPECDIET" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_USER_COMPONENT_VALUE_EUFDNAME" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_USER_COMPONENT_VALUE_FOODID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_USER_FOOD_FOODTYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_USER_FOOD_FUCLASS" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_USER_FOOD_FUCLASSP" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_USER_FOOD_IGCLASS" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_USER_FOOD_IGCLASSP" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_USER_FOOD_PROCESS" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_USER_SPECDIET_FOODID" ManuallyRouted="false" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_USER_SPECDIET_SPECDIET" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
