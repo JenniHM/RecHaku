@@ -119,116 +119,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\KategoriatController.cs" />
-    <Compile Include="Controllers\MenuListaController.cs" />
-    <Compile Include="Controllers\MenunKategoriatController.cs" />
-    <Compile Include="Controllers\MittayksikkoListaController.cs" />
-    <Compile Include="Controllers\RaakaAineetController.cs" />
-    <Compile Include="Controllers\ReseptienAinesosaListaController.cs" />
-    <Compile Include="Controllers\ReseptienVaiheetController.cs" />
-    <Compile Include="Controllers\ReseptienVaiheidenListaController.cs" />
-    <Compile Include="Controllers\ReseptitController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\component_value.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\eufdname_FI.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\food.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\foodtype_FI.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\fuclass_FI.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\igclass_FI.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Kategoriat.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MenuLista.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MenunKategoriat.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MittayksikkoLista.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\process_FI.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RaakaAineet.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ReseptienAinesosaLista.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ReseptienVaiheet.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ReseptienVaiheidenLista.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ReseptiHakuModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReseptiHakuModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ReseptiHakuModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ReseptiHakuModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReseptiHakuModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Reseptit.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\specdiet.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\specdiet_FI.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\user_component_value.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\user_eufdname_FI.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\user_food.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\user_foodtype_FI.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\user_fuclass_FI.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\user_igclass_FI.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\user_process_FI.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\user_specdiet.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\user_specdiet_FI.cs">
-      <DependentUpon>ReseptiHakuModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -254,29 +146,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ReseptiHakuModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ReseptiHakuModel.Context.cs</LastGenOutput>
-      <DependentUpon>ReseptiHakuModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\ReseptiHakuModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ReseptiHakuModel.edmx</DependentUpon>
-      <LastGenOutput>ReseptiHakuModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\ReseptiHakuModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ReseptiHakuModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ReseptiHakuModel.edmx.diagram">
-      <DependentUpon>ReseptiHakuModel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -302,54 +177,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\RaakaAineet\Create.cshtml" />
-    <Content Include="Views\RaakaAineet\Delete.cshtml" />
-    <Content Include="Views\RaakaAineet\Details.cshtml" />
-    <Content Include="Views\RaakaAineet\Edit.cshtml" />
-    <Content Include="Views\RaakaAineet\Index.cshtml" />
-    <Content Include="Views\Kategoriat\Create.cshtml" />
-    <Content Include="Views\Kategoriat\Delete.cshtml" />
-    <Content Include="Views\Kategoriat\Details.cshtml" />
-    <Content Include="Views\Kategoriat\Edit.cshtml" />
-    <Content Include="Views\Kategoriat\Index.cshtml" />
-    <Content Include="Views\Reseptit\Create.cshtml" />
-    <Content Include="Views\Reseptit\Delete.cshtml" />
-    <Content Include="Views\Reseptit\Details.cshtml" />
-    <Content Include="Views\Reseptit\Edit.cshtml" />
-    <Content Include="Views\Reseptit\Index.cshtml" />
-    <Content Include="Views\ReseptienVaiheet\Create.cshtml" />
-    <Content Include="Views\ReseptienVaiheet\Delete.cshtml" />
-    <Content Include="Views\ReseptienVaiheet\Details.cshtml" />
-    <Content Include="Views\ReseptienVaiheet\Edit.cshtml" />
-    <Content Include="Views\ReseptienVaiheet\Index.cshtml" />
-    <Content Include="Views\ReseptienVaiheidenLista\Create.cshtml" />
-    <Content Include="Views\ReseptienVaiheidenLista\Delete.cshtml" />
-    <Content Include="Views\ReseptienVaiheidenLista\Details.cshtml" />
-    <Content Include="Views\ReseptienVaiheidenLista\Edit.cshtml" />
-    <Content Include="Views\ReseptienVaiheidenLista\Index.cshtml" />
-    <Content Include="Views\ReseptienAinesosaLista\Create.cshtml" />
-    <Content Include="Views\ReseptienAinesosaLista\Delete.cshtml" />
-    <Content Include="Views\ReseptienAinesosaLista\Details.cshtml" />
-    <Content Include="Views\ReseptienAinesosaLista\Edit.cshtml" />
-    <Content Include="Views\ReseptienAinesosaLista\Index.cshtml" />
-    <Content Include="Views\MittayksikkoLista\Create.cshtml" />
-    <Content Include="Views\MittayksikkoLista\Delete.cshtml" />
-    <Content Include="Views\MittayksikkoLista\Details.cshtml" />
-    <Content Include="Views\MittayksikkoLista\Edit.cshtml" />
-    <Content Include="Views\MittayksikkoLista\Index.cshtml" />
-    <Content Include="Views\MenuLista\Create.cshtml" />
-    <Content Include="Views\MenuLista\Delete.cshtml" />
-    <Content Include="Views\MenuLista\Details.cshtml" />
-    <Content Include="Views\MenuLista\Edit.cshtml" />
-    <Content Include="Views\MenuLista\Index.cshtml" />
-    <Content Include="Views\MenunKategoriat\Create.cshtml" />
-    <Content Include="Views\MenunKategoriat\Delete.cshtml" />
-    <Content Include="Views\MenunKategoriat\Details.cshtml" />
-    <Content Include="Views\MenunKategoriat\Edit.cshtml" />
-    <Content Include="Views\MenunKategoriat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
