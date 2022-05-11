@@ -18,12 +18,18 @@ namespace ReseptiHaku.Models
         public MenuLista()
         {
             this.MenuVaihde = new HashSet<MenuVaihde>();
+            this.SuosikkiMenut = new HashSet<SuosikkiMenut>();
         }
     
         public int MenuID { get; set; }
         public string MenunNimi { get; set; }
+        public Nullable<int> LoginID { get; set; }
+        public Nullable<bool> Julkinen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MenuVaihde> MenuVaihde { get; set; }
+        public virtual Logins Logins { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SuosikkiMenut> SuosikkiMenut { get; set; }
     }
 }

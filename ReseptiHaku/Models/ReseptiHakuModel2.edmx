@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ReseptiHakuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ReseptiHakuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="component_value">
           <Key>
             <PropertyRef Name="EDMX_ID" />
@@ -70,12 +70,22 @@
           <Property Name="KategoriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Kategoria" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Logins">
+          <Key>
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="LoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="MenuLista">
           <Key>
             <PropertyRef Name="MenuID" />
           </Key>
           <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MenunNimi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LoginID" Type="int" />
+          <Property Name="Julkinen" Type="bit" />
         </EntityType>
         <EntityType Name="MenunKategoriat">
           <Key>
@@ -123,7 +133,7 @@
           </Key>
           <Property Name="ReseptiAinesosaListaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RaakaAineID" Type="int" Nullable="false" />
-          <Property Name="Maara" Type="int" Nullable="false" />
+          <Property Name="Maara" Type="numeric" Precision="7" Scale="2" Nullable="false" />
           <Property Name="MittayksikkoID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ReseptienAinesosienVaihde">
@@ -156,6 +166,8 @@
           <Property Name="ReseptiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReseptinNimi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AnnosKoko" Type="int" />
+          <Property Name="LoginID" Type="int" />
+          <Property Name="Julkinen" Type="bit" />
         </EntityType>
         <EntityType Name="specdiet">
           <Key>
@@ -172,6 +184,42 @@
           <Property Name="THSCODE" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="DESCRIPT" Type="nvarchar(max)" />
           <Property Name="LANG" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ReseptiHaku.dbo.SuosikkiLinkit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SuosikkiLinkit">
+          <Key>
+            <PropertyRef Name="SuosikkiLinkkiID" />
+            <PropertyRef Name="Linkki" />
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="SuosikkiLinkkiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Linkki" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LoginID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ReseptiHaku.dbo.SuosikkiMenut' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SuosikkiMenut">
+          <Key>
+            <PropertyRef Name="SuosikkiMenuID" />
+            <PropertyRef Name="MenuID" />
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="SuosikkiMenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="LoginID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ReseptiHaku.dbo.SuosikkiReseptit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SuosikkiReseptit">
+          <Key>
+            <PropertyRef Name="SuosikkiReseptiID" />
+            <PropertyRef Name="ReseptiID" />
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="SuosikkiReseptiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReseptiID" Type="int" Nullable="false" />
+          <Property Name="LoginID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -361,6 +409,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MENULISTA_LOGINID">
+          <End Role="Logins" Type="Self.Logins" Multiplicity="0..1" />
+          <End Role="MenuLista" Type="Self.MenuLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logins">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="MenuLista">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MENUVAIHDE_MENUID">
           <End Role="MenuLista" Type="Self.MenuLista" Multiplicity="1" />
           <End Role="MenuVaihde" Type="Self.MenuVaihde" Multiplicity="*" />
@@ -481,6 +541,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RESEPTIT_LOGINID">
+          <End Role="Logins" Type="Self.Logins" Multiplicity="0..1" />
+          <End Role="Reseptit" Type="Self.Reseptit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logins">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="Reseptit">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SPECDIET_FOODID">
           <End Role="food" Type="Self.food" Multiplicity="1" />
           <End Role="specdiet" Type="Self.specdiet" Multiplicity="*" />
@@ -502,6 +574,66 @@
             </Principal>
             <Dependent Role="specdiet">
               <PropertyRef Name="SPECDIET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUOSIKKILINKIT_LOGINID">
+          <End Role="Logins" Type="Self.Logins" Multiplicity="1" />
+          <End Role="SuosikkiLinkit" Type="Self.SuosikkiLinkit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logins">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="SuosikkiLinkit">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUOSIKKIMENUT_LOGINID">
+          <End Role="Logins" Type="Self.Logins" Multiplicity="1" />
+          <End Role="SuosikkiMenut" Type="Self.SuosikkiMenut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logins">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="SuosikkiMenut">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUOSIKKIMENUT_MENUID">
+          <End Role="MenuLista" Type="Self.MenuLista" Multiplicity="1" />
+          <End Role="SuosikkiMenut" Type="Self.SuosikkiMenut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuLista">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="SuosikkiMenut">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUOSIKKIRESEPTIT_LOGINID">
+          <End Role="Logins" Type="Self.Logins" Multiplicity="1" />
+          <End Role="SuosikkiReseptit" Type="Self.SuosikkiReseptit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logins">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="SuosikkiReseptit">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUOSIKKIRESEPTIT_RESEPTIID">
+          <End Role="Reseptit" Type="Self.Reseptit" Multiplicity="1" />
+          <End Role="SuosikkiReseptit" Type="Self.SuosikkiReseptit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reseptit">
+              <PropertyRef Name="ReseptiID" />
+            </Principal>
+            <Dependent Role="SuosikkiReseptit">
+              <PropertyRef Name="ReseptiID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -633,6 +765,7 @@
           <EntitySet Name="fuclass_FI" EntityType="Self.fuclass_FI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="igclass_FI" EntityType="Self.igclass_FI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategoriat" EntityType="Self.Kategoriat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuLista" EntityType="Self.MenuLista" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenunKategoriat" EntityType="Self.MenunKategoriat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuVaihde" EntityType="Self.MenuVaihde" Schema="dbo" store:Type="Tables" />
@@ -656,6 +789,27 @@
           <EntitySet Name="user_process_FI" EntityType="Self.user_process_FI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_specdiet" EntityType="Self.user_specdiet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_specdiet_FI" EntityType="Self.user_specdiet_FI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SuosikkiLinkit" EntityType="Self.SuosikkiLinkit" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SuosikkiLinkit].[SuosikkiLinkkiID] AS [SuosikkiLinkkiID], 
+    [SuosikkiLinkit].[Linkki] AS [Linkki], 
+    [SuosikkiLinkit].[LoginID] AS [LoginID]
+    FROM [dbo].[SuosikkiLinkit] AS [SuosikkiLinkit]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SuosikkiMenut" EntityType="Self.SuosikkiMenut" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SuosikkiMenut].[SuosikkiMenuID] AS [SuosikkiMenuID], 
+    [SuosikkiMenut].[MenuID] AS [MenuID], 
+    [SuosikkiMenut].[LoginID] AS [LoginID]
+    FROM [dbo].[SuosikkiMenut] AS [SuosikkiMenut]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SuosikkiReseptit" EntityType="Self.SuosikkiReseptit" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SuosikkiReseptit].[SuosikkiReseptiID] AS [SuosikkiReseptiID], 
+    [SuosikkiReseptit].[ReseptiID] AS [ReseptiID], 
+    [SuosikkiReseptit].[LoginID] AS [LoginID]
+    FROM [dbo].[SuosikkiReseptit] AS [SuosikkiReseptit]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_COMPONENT_VALUE_EUFDNAME" Association="Self.FK_COMPONENT_VALUE_EUFDNAME">
             <End Role="eufdname_FI" EntitySet="eufdname_FI" />
             <End Role="component_value" EntitySet="component_value" />
@@ -687,6 +841,10 @@
           <AssociationSet Name="FK_FOOD_PROCESS" Association="Self.FK_FOOD_PROCESS">
             <End Role="process_FI" EntitySet="process_FI" />
             <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENULISTA_LOGINID" Association="Self.FK_MENULISTA_LOGINID">
+            <End Role="Logins" EntitySet="Logins" />
+            <End Role="MenuLista" EntitySet="MenuLista" />
           </AssociationSet>
           <AssociationSet Name="FK_MENUVAIHDE_MENUID" Association="Self.FK_MENUVAIHDE_MENUID">
             <End Role="MenuLista" EntitySet="MenuLista" />
@@ -728,6 +886,10 @@
             <End Role="ReseptienVaiheet" EntitySet="ReseptienVaiheet" />
             <End Role="ReseptienVaiheidenLista" EntitySet="ReseptienVaiheidenLista" />
           </AssociationSet>
+          <AssociationSet Name="FK_RESEPTIT_LOGINID" Association="Self.FK_RESEPTIT_LOGINID">
+            <End Role="Logins" EntitySet="Logins" />
+            <End Role="Reseptit" EntitySet="Reseptit" />
+          </AssociationSet>
           <AssociationSet Name="FK_SPECDIET_FOODID" Association="Self.FK_SPECDIET_FOODID">
             <End Role="food" EntitySet="food" />
             <End Role="specdiet" EntitySet="specdiet" />
@@ -735,6 +897,26 @@
           <AssociationSet Name="FK_SPECDIET_SPECDIET" Association="Self.FK_SPECDIET_SPECDIET">
             <End Role="specdiet_FI" EntitySet="specdiet_FI" />
             <End Role="specdiet" EntitySet="specdiet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUOSIKKILINKIT_LOGINID" Association="Self.FK_SUOSIKKILINKIT_LOGINID">
+            <End Role="Logins" EntitySet="Logins" />
+            <End Role="SuosikkiLinkit" EntitySet="SuosikkiLinkit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUOSIKKIMENUT_LOGINID" Association="Self.FK_SUOSIKKIMENUT_LOGINID">
+            <End Role="Logins" EntitySet="Logins" />
+            <End Role="SuosikkiMenut" EntitySet="SuosikkiMenut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUOSIKKIMENUT_MENUID" Association="Self.FK_SUOSIKKIMENUT_MENUID">
+            <End Role="MenuLista" EntitySet="MenuLista" />
+            <End Role="SuosikkiMenut" EntitySet="SuosikkiMenut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUOSIKKIRESEPTIT_LOGINID" Association="Self.FK_SUOSIKKIRESEPTIT_LOGINID">
+            <End Role="Logins" EntitySet="Logins" />
+            <End Role="SuosikkiReseptit" EntitySet="SuosikkiReseptit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUOSIKKIRESEPTIT_RESEPTIID" Association="Self.FK_SUOSIKKIRESEPTIT_RESEPTIID">
+            <End Role="Reseptit" EntitySet="Reseptit" />
+            <End Role="SuosikkiReseptit" EntitySet="SuosikkiReseptit" />
           </AssociationSet>
           <AssociationSet Name="FK_USER_COMPONENT_VALUE_EUFDNAME" Association="Self.FK_USER_COMPONENT_VALUE_EUFDNAME">
             <End Role="user_eufdname_FI" EntitySet="user_eufdname_FI" />
@@ -777,8 +959,7 @@
             <End Role="user_specdiet" EntitySet="user_specdiet" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ReseptiHakuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -871,6 +1052,10 @@
           <Property Name="MenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MenunNimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="MenuVaihde" Relationship="Self.FK_MENUVAIHDE_MENUID" FromRole="MenuLista" ToRole="MenuVaihde" />
+          <Property Name="LoginID" Type="Int32" />
+          <Property Name="Julkinen" Type="Boolean" />
+          <NavigationProperty Name="Logins" Relationship="ReseptiHakuModel.FK_MENULISTA_LOGINID" FromRole="MenuLista" ToRole="Logins" />
+          <NavigationProperty Name="SuosikkiMenut" Relationship="ReseptiHakuModel.FK_SUOSIKKIMENUT_MENUID" FromRole="MenuLista" ToRole="SuosikkiMenut" />
         </EntityType>
         <EntityType Name="MenunKategoriat">
           <Key>
@@ -926,7 +1111,7 @@
           </Key>
           <Property Name="ReseptiAinesosaListaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RaakaAineID" Type="Int32" Nullable="false" />
-          <Property Name="Maara" Type="Int32" Nullable="false" />
+          <Property Name="Maara" Type="Decimal" Nullable="false" />
           <Property Name="MittayksikkoID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MittayksikkoLista" Relationship="Self.FK_RESEPTIENAINESOSALISTA_MITTAYKSIKKOID" FromRole="ReseptienAinesosaLista" ToRole="MittayksikkoLista" />
           <NavigationProperty Name="RaakaAineet" Relationship="Self.FK_RESEPTIENAINESOSALISTA_RAAKAAINEID" FromRole="ReseptienAinesosaLista" ToRole="RaakaAineet" />
@@ -970,6 +1155,10 @@
           <NavigationProperty Name="MenuVaihde" Relationship="Self.FK_MENUVAIHDE_RESEPTIID" FromRole="Reseptit" ToRole="MenuVaihde" />
           <NavigationProperty Name="ReseptienAinesosienVaihde" Relationship="Self.FK_RESEPTIENAINESOSIENVAIHDE_RESEPTIID" FromRole="Reseptit" ToRole="ReseptienAinesosienVaihde" />
           <NavigationProperty Name="ReseptienVaiheidenLista" Relationship="Self.FK_RESEPTIENVAIHEIDENLISTA_RESEPTIID" FromRole="Reseptit" ToRole="ReseptienVaiheidenLista" />
+          <Property Name="LoginID" Type="Int32" />
+          <Property Name="Julkinen" Type="Boolean" />
+          <NavigationProperty Name="Logins" Relationship="ReseptiHakuModel.FK_RESEPTIT_LOGINID" FromRole="Reseptit" ToRole="Logins" />
+          <NavigationProperty Name="SuosikkiReseptit" Relationship="ReseptiHakuModel.FK_SUOSIKKIRESEPTIT_RESEPTIID" FromRole="Reseptit" ToRole="SuosikkiReseptit" />
         </EntityType>
         <EntityType Name="specdiet">
           <Key>
@@ -1613,7 +1802,171 @@
             <End Role="user_specdiet_FI" EntitySet="user_specdiet_FI" />
             <End Role="user_specdiet" EntitySet="user_specdiet" />
           </AssociationSet>
+          <EntitySet Name="Logins" EntityType="ReseptiHakuModel.Logins" />
+          <EntitySet Name="SuosikkiLinkit" EntityType="ReseptiHakuModel.SuosikkiLinkit" />
+          <EntitySet Name="SuosikkiMenut" EntityType="ReseptiHakuModel.SuosikkiMenut" />
+          <EntitySet Name="SuosikkiReseptit" EntityType="ReseptiHakuModel.SuosikkiReseptit" />
+          <AssociationSet Name="FK_MENULISTA_LOGINID" Association="ReseptiHakuModel.FK_MENULISTA_LOGINID">
+            <End Role="Logins" EntitySet="Logins" />
+            <End Role="MenuLista" EntitySet="MenuLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESEPTIT_LOGINID" Association="ReseptiHakuModel.FK_RESEPTIT_LOGINID">
+            <End Role="Logins" EntitySet="Logins" />
+            <End Role="Reseptit" EntitySet="Reseptit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUOSIKKILINKIT_LOGINID" Association="ReseptiHakuModel.FK_SUOSIKKILINKIT_LOGINID">
+            <End Role="Logins" EntitySet="Logins" />
+            <End Role="SuosikkiLinkit" EntitySet="SuosikkiLinkit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUOSIKKIMENUT_LOGINID" Association="ReseptiHakuModel.FK_SUOSIKKIMENUT_LOGINID">
+            <End Role="Logins" EntitySet="Logins" />
+            <End Role="SuosikkiMenut" EntitySet="SuosikkiMenut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUOSIKKIRESEPTIT_LOGINID" Association="ReseptiHakuModel.FK_SUOSIKKIRESEPTIT_LOGINID">
+            <End Role="Logins" EntitySet="Logins" />
+            <End Role="SuosikkiReseptit" EntitySet="SuosikkiReseptit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUOSIKKIMENUT_MENUID" Association="ReseptiHakuModel.FK_SUOSIKKIMENUT_MENUID">
+            <End Role="MenuLista" EntitySet="MenuLista" />
+            <End Role="SuosikkiMenut" EntitySet="SuosikkiMenut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUOSIKKIRESEPTIT_RESEPTIID" Association="ReseptiHakuModel.FK_SUOSIKKIRESEPTIT_RESEPTIID">
+            <End Role="Reseptit" EntitySet="Reseptit" />
+            <End Role="SuosikkiReseptit" EntitySet="SuosikkiReseptit" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Logins">
+          <Key>
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="LoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PassWord" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MenuLista" Relationship="ReseptiHakuModel.FK_MENULISTA_LOGINID" FromRole="Logins" ToRole="MenuLista" />
+          <NavigationProperty Name="Reseptit" Relationship="ReseptiHakuModel.FK_RESEPTIT_LOGINID" FromRole="Logins" ToRole="Reseptit" />
+          <NavigationProperty Name="SuosikkiLinkit" Relationship="ReseptiHakuModel.FK_SUOSIKKILINKIT_LOGINID" FromRole="Logins" ToRole="SuosikkiLinkit" />
+          <NavigationProperty Name="SuosikkiMenut" Relationship="ReseptiHakuModel.FK_SUOSIKKIMENUT_LOGINID" FromRole="Logins" ToRole="SuosikkiMenut" />
+          <NavigationProperty Name="SuosikkiReseptit" Relationship="ReseptiHakuModel.FK_SUOSIKKIRESEPTIT_LOGINID" FromRole="Logins" ToRole="SuosikkiReseptit" />
+        </EntityType>
+        <EntityType Name="SuosikkiLinkit">
+          <Key>
+            <PropertyRef Name="SuosikkiLinkkiID" />
+            <PropertyRef Name="Linkki" />
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="SuosikkiLinkkiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Linkki" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LoginID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Logins" Relationship="ReseptiHakuModel.FK_SUOSIKKILINKIT_LOGINID" FromRole="SuosikkiLinkit" ToRole="Logins" />
+        </EntityType>
+        <EntityType Name="SuosikkiMenut">
+          <Key>
+            <PropertyRef Name="SuosikkiMenuID" />
+            <PropertyRef Name="MenuID" />
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="SuosikkiMenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="LoginID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Logins" Relationship="ReseptiHakuModel.FK_SUOSIKKIMENUT_LOGINID" FromRole="SuosikkiMenut" ToRole="Logins" />
+          <NavigationProperty Name="MenuLista" Relationship="ReseptiHakuModel.FK_SUOSIKKIMENUT_MENUID" FromRole="SuosikkiMenut" ToRole="MenuLista" />
+        </EntityType>
+        <EntityType Name="SuosikkiReseptit">
+          <Key>
+            <PropertyRef Name="SuosikkiReseptiID" />
+            <PropertyRef Name="ReseptiID" />
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="SuosikkiReseptiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReseptiID" Type="Int32" Nullable="false" />
+          <Property Name="LoginID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Logins" Relationship="ReseptiHakuModel.FK_SUOSIKKIRESEPTIT_LOGINID" FromRole="SuosikkiReseptit" ToRole="Logins" />
+          <NavigationProperty Name="Reseptit" Relationship="ReseptiHakuModel.FK_SUOSIKKIRESEPTIT_RESEPTIID" FromRole="SuosikkiReseptit" ToRole="Reseptit" />
+        </EntityType>
+        <Association Name="FK_MENULISTA_LOGINID">
+          <End Type="ReseptiHakuModel.Logins" Role="Logins" Multiplicity="0..1" />
+          <End Type="ReseptiHakuModel.MenuLista" Role="MenuLista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logins">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="MenuLista">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESEPTIT_LOGINID">
+          <End Type="ReseptiHakuModel.Logins" Role="Logins" Multiplicity="0..1" />
+          <End Type="ReseptiHakuModel.Reseptit" Role="Reseptit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logins">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="Reseptit">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUOSIKKILINKIT_LOGINID">
+          <End Type="ReseptiHakuModel.Logins" Role="Logins" Multiplicity="1" />
+          <End Type="ReseptiHakuModel.SuosikkiLinkit" Role="SuosikkiLinkit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logins">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="SuosikkiLinkit">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUOSIKKIMENUT_LOGINID">
+          <End Type="ReseptiHakuModel.Logins" Role="Logins" Multiplicity="1" />
+          <End Type="ReseptiHakuModel.SuosikkiMenut" Role="SuosikkiMenut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logins">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="SuosikkiMenut">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUOSIKKIRESEPTIT_LOGINID">
+          <End Type="ReseptiHakuModel.Logins" Role="Logins" Multiplicity="1" />
+          <End Type="ReseptiHakuModel.SuosikkiReseptit" Role="SuosikkiReseptit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Logins">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="SuosikkiReseptit">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUOSIKKIMENUT_MENUID">
+          <End Type="ReseptiHakuModel.MenuLista" Role="MenuLista" Multiplicity="1" />
+          <End Type="ReseptiHakuModel.SuosikkiMenut" Role="SuosikkiMenut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuLista">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="SuosikkiMenut">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUOSIKKIRESEPTIT_RESEPTIID">
+          <End Type="ReseptiHakuModel.Reseptit" Role="Reseptit" Multiplicity="1" />
+          <End Type="ReseptiHakuModel.SuosikkiReseptit" Role="SuosikkiReseptit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reseptit">
+              <PropertyRef Name="ReseptiID" />
+            </Principal>
+            <Dependent Role="SuosikkiReseptit">
+              <PropertyRef Name="ReseptiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1695,6 +2048,8 @@
           <EntitySetMapping Name="MenuLista">
             <EntityTypeMapping TypeName="ReseptiHakuModel.MenuLista">
               <MappingFragment StoreEntitySet="MenuLista">
+                <ScalarProperty Name="Julkinen" ColumnName="Julkinen" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
                 <ScalarProperty Name="MenuID" ColumnName="MenuID" />
                 <ScalarProperty Name="MenunNimi" ColumnName="MenunNimi" />
               </MappingFragment>
@@ -1784,6 +2139,8 @@
           <EntitySetMapping Name="Reseptit">
             <EntityTypeMapping TypeName="ReseptiHakuModel.Reseptit">
               <MappingFragment StoreEntitySet="Reseptit">
+                <ScalarProperty Name="Julkinen" ColumnName="Julkinen" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
                 <ScalarProperty Name="ReseptiID" ColumnName="ReseptiID" />
                 <ScalarProperty Name="ReseptinNimi" ColumnName="ReseptinNimi" />
                 <ScalarProperty Name="AnnosKoko" ColumnName="AnnosKoko" />
@@ -1907,6 +2264,42 @@
                 <ScalarProperty Name="THSCODE" ColumnName="THSCODE" />
                 <ScalarProperty Name="DESCRIPT" ColumnName="DESCRIPT" />
                 <ScalarProperty Name="LANG" ColumnName="LANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.Logins">
+              <MappingFragment StoreEntitySet="Logins">
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SuosikkiLinkit">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.SuosikkiLinkit">
+              <MappingFragment StoreEntitySet="SuosikkiLinkit">
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="Linkki" ColumnName="Linkki" />
+                <ScalarProperty Name="SuosikkiLinkkiID" ColumnName="SuosikkiLinkkiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SuosikkiMenut">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.SuosikkiMenut">
+              <MappingFragment StoreEntitySet="SuosikkiMenut">
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="SuosikkiMenuID" ColumnName="SuosikkiMenuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SuosikkiReseptit">
+            <EntityTypeMapping TypeName="ReseptiHakuModel.SuosikkiReseptit">
+              <MappingFragment StoreEntitySet="SuosikkiReseptit">
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="ReseptiID" ColumnName="ReseptiID" />
+                <ScalarProperty Name="SuosikkiReseptiID" ColumnName="SuosikkiReseptiID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

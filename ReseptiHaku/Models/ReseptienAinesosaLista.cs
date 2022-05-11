@@ -22,7 +22,7 @@ namespace ReseptiHaku.Models
     
         public int ReseptiAinesosaListaID { get; set; }
         public int RaakaAineID { get; set; }
-        public int Maara { get; set; }
+        public decimal Maara { get; set; }
         public int MittayksikkoID { get; set; }
     
         public virtual MittayksikkoLista MittayksikkoLista { get; set; }

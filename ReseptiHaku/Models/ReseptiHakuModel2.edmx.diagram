@@ -65,6 +65,17 @@
         <AssociationConnector Association="ReseptiHakuModel.FK_USER_FOOD_PROCESS" ManuallyRouted="false" />
         <AssociationConnector Association="ReseptiHakuModel.FK_USER_SPECDIET_FOODID" ManuallyRouted="false" />
         <AssociationConnector Association="ReseptiHakuModel.FK_USER_SPECDIET_SPECDIET" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.Logins" Width="1.5" PointX="0.75" PointY="20.5" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.SuosikkiLinkit" Width="1.5" PointX="5" PointY="27.125" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.SuosikkiMenut" Width="1.5" PointX="8.25" PointY="23.75" />
+        <EntityTypeShape EntityType="ReseptiHakuModel.SuosikkiReseptit" Width="1.5" PointX="8.25" PointY="20.75" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_MENULISTA_LOGINID" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_RESEPTIT_LOGINID" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_SUOSIKKILINKIT_LOGINID" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_SUOSIKKIMENUT_LOGINID" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_SUOSIKKIRESEPTIT_LOGINID" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_SUOSIKKIMENUT_MENUID" />
+        <AssociationConnector Association="ReseptiHakuModel.FK_SUOSIKKIRESEPTIT_RESEPTIID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

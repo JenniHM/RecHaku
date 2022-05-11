@@ -12,30 +12,30 @@ namespace ReseptiHaku.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Reseptit
+    public partial class Logins
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Reseptit()
+        public Logins()
         {
-            this.MenuVaihde = new HashSet<MenuVaihde>();
-            this.ReseptienAinesosienVaihde = new HashSet<ReseptienAinesosienVaihde>();
-            this.ReseptienVaiheidenLista = new HashSet<ReseptienVaiheidenLista>();
+            this.MenuLista = new HashSet<MenuLista>();
+            this.Reseptit = new HashSet<Reseptit>();
+            this.SuosikkiLinkit = new HashSet<SuosikkiLinkit>();
+            this.SuosikkiMenut = new HashSet<SuosikkiMenut>();
             this.SuosikkiReseptit = new HashSet<SuosikkiReseptit>();
         }
     
-        public int ReseptiID { get; set; }
-        public string ReseptinNimi { get; set; }
-        public Nullable<int> AnnosKoko { get; set; }
-        public Nullable<int> LoginID { get; set; }
-        public Nullable<bool> Julkinen { get; set; }
+        public int LoginID { get; set; }
+        public string UserName { get; set; }
+        public string PassWord { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MenuVaihde> MenuVaihde { get; set; }
+        public virtual ICollection<MenuLista> MenuLista { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReseptienAinesosienVaihde> ReseptienAinesosienVaihde { get; set; }
+        public virtual ICollection<Reseptit> Reseptit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReseptienVaiheidenLista> ReseptienVaiheidenLista { get; set; }
-        public virtual Logins Logins { get; set; }
+        public virtual ICollection<SuosikkiLinkit> SuosikkiLinkit { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SuosikkiMenut> SuosikkiMenut { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SuosikkiReseptit> SuosikkiReseptit { get; set; }
     }

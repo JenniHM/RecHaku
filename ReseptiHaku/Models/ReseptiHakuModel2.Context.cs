@@ -55,5 +55,9 @@ namespace ReseptiHaku.Models
         public virtual DbSet<user_process_FI> user_process_FI { get; set; }
         public virtual DbSet<user_specdiet> user_specdiet { get; set; }
         public virtual DbSet<user_specdiet_FI> user_specdiet_FI { get; set; }
+        public virtual DbSet<Logins> Logins { get; set; }
+        public virtual DbSet<SuosikkiLinkit> SuosikkiLinkit { get; set; }
+        public virtual DbSet<SuosikkiMenut> SuosikkiMenut { get; set; }
+        public virtual DbSet<SuosikkiReseptit> SuosikkiReseptit { get; set; }
     }
 }
