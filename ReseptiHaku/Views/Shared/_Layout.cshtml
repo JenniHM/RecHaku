@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - ReseptiHaku</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -32,7 +32,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="/Home/Index/">ReseptiHaku</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -98,6 +98,9 @@
                             <a class="dropdown-item" href="#">Separated link</a>
                         </div>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href="#">@ViewBag.UserName @ViewBag.LoggedStatus</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Home/Login">LogIn</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Home/LogOut">LogOut</a></li>
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-sm-2" type="text" placeholder="Search">
@@ -111,7 +114,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - ReseptiHaku</p>
         </footer>
     </div>
 

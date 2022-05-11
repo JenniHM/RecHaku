@@ -11,6 +11,7 @@ namespace ReseptiHaku.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Logins
     {
@@ -25,8 +26,12 @@ namespace ReseptiHaku.Models
         }
     
         public int LoginID { get; set; }
+        [Required(ErrorMessage = "Anna käyttäjätunnus!")]
         public string UserName { get; set; }
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Anna salasana!")]
         public string PassWord { get; set; }
+        public string LoginErrorMessage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MenuLista> MenuLista { get; set; }
