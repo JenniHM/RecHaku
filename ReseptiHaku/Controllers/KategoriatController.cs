@@ -17,6 +17,17 @@ namespace ReseptiHaku.Controllers
         // GET: Kategoriat
         public ActionResult Index()
         {
+            //if (Session["UserName"] == null)
+            //{
+            //    ViewBag.LoggedStatus = "Out";
+            //    return RedirectToAction("login", "home");                
+            //}
+            //else
+            //{
+            //    ViewBag.LoggedStatus = "In";
+            //    ViewBag.UserName = Session["UserName"];
+            //    return View(db.Kategoriat.ToList());
+            //}
             return View(db.Kategoriat.ToList());
         }
 
@@ -123,5 +134,8 @@ namespace ReseptiHaku.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
     }
 }

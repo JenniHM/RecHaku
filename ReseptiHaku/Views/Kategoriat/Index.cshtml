@@ -4,30 +4,35 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Kategoriat - [dbo].[Kategoriat]</h2>
+    <h2>Kategoriat - [dbo].[Kategoriat]</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Kategoria)
-        </th>
-        <th></th>
-    </tr>
+    @*modal-ikkunan avauspainike debuggausta varten aluksi*@
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#LoginRuutu">Avaa Modal-ikkuna</button>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kategoria)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.KategoriaID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.KategoriaID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.KategoriaID })
-        </td>
-    </tr>
-}
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Kategoria)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kategoria)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.KategoriaID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.KategoriaID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.KategoriaID })
+                </td>
+            </tr>
+        }
+
+    </table>
+

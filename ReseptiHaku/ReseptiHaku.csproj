@@ -391,6 +391,9 @@
     <Content Include="Views\foods\Edit.cshtml" />
     <Content Include="Views\foods\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_NavBarLoggedIn.cshtml" />
+    <Content Include="Views\Shared\_NavBarLoggedOut.cshtml" />
+    <Content Include="Views\Shared\_LoginModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

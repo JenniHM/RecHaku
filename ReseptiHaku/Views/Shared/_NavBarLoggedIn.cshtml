@@ -1,0 +1,78 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/Home/Index/">ReseptiHaku</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/Home/Index/">
+                        Home
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Raaka-aineet</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/RaakaAineet/Index/">Raaka-aineet</a>
+                        <a class="dropdown-item" href="/Kategoriat/Index/">Kategoriat</a>
+                        <a class="dropdown-item" href="/MittayksikkoLista/Index/">Mittayksiköt</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reseptit</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Reseptit/Index/">Reseptit</a>
+                        <a class="dropdown-item" href="/ReseptienVaiheet/Index/">Reseptien vaiheet</a>
+                        <a class="dropdown-item" href="/ReseptienAinesosaLista/Index/">Reseptien ainesosien lista</a>
+                        <a class="dropdown-item" href="/ReseptienVaiheidenLista/Index/">Reseptien vaihde</a>
+                        <a class="dropdown-item" href="/ReseptienAinesosienVaihde/Index/">Reseptien ainesosien vaihde</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menut</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/MenuLista/Index/">Menut</a>
+                        <a class="dropdown-item" href="/MenunKategoriat/Index/">Menujen kategoriat</a>
+                        <a class="dropdown-item" href="/MenuVaihde/Index/">Menujen vaihde</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Finelin tietokanta</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/foods/Index/">Finelin raaka-aineiden tietokanta</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#">@ViewBag.UserName @ViewBag.LoggedStatus</a></li>
+                <li class="nav-item"><a class="nav-link" href="/Home/LogOut">LogOut</a></li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>

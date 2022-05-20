@@ -1,5 +1,24 @@
-﻿@{
+﻿@model ReseptiHaku.Models.Logins
+
+@{
     ViewBag.Title = "Home Page";
+}
+
+@*FAS:iin liittyvä stylesheet linkki!*@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+@*<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>*@
+@*<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>*@
+
+@*JQuery, joka suoritetaan aina, kun sivu latautuu*@
+@*Tarkistaa tuliko kontrollerilta tieto kirjautumisen epäonnistumisesta*@
+@section scripts {
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            if (@ViewBag.LoginError == 1) {
+                $('#LoginRuutu').modal('show');
+            }
+        });
+    </script>
 }
 
 <div class="jumbotron">
@@ -29,3 +48,11 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+@*modal-ikkunan avauspainike debuggausta varten aluksi*@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#LoginRuutu">Avaa Modal-ikkuna</button>
+
+@*modaalin login-ikkunan renderöinti*@
+@{
+    Html.RenderPartial("_LoginModal");
+}
