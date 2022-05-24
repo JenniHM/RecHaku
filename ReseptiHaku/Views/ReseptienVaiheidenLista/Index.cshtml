@@ -4,6 +4,24 @@
     ViewBag.Title = "Index";
 }
 
+@*JQuery, joka suoritetaan aina, kun sivu latautuu*@
+@*Tarkistaa tuliko kontrollerilta tieto kirjautumisen epäonnistumisesta*@
+@section scripts {
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            if (@ViewBag.LoginError == 1) {
+                $('#LoginRuutu').modal('show');
+            }
+        });
+    </script>
+}
+
+@*modaalin login-ikkunan renderöinti*@
+@*koska näkymällä on eri model alunperin käytössä, pitää sille välittää oikea model:*@
+@{
+    Html.RenderPartial("_LoginModal", new ReseptiHaku.Models.Logins());
+}
+
 <h2>Reseptien vaiheiden vaihde - [dbo].[ReseptienVaiheidenLista]</h2>
 
 <p>"Vaihde" - taulu, joka toimii relaatiotietokantojen normalisointisääntöjen mukaisena kytköksenä Reseptien ja Reseptien vaiheiden välillä.</p>

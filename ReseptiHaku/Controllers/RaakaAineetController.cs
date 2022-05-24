@@ -16,7 +16,7 @@ namespace ReseptiHaku.Controllers
 
         // GET: RaakaAineet
         public ActionResult Index()
-        {
+        {            
             var raakaAineet = db.RaakaAineet.Include(r => r.Kategoriat);
             return View(raakaAineet.ToList());
         }

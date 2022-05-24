@@ -59,7 +59,8 @@ namespace ReseptiHaku.Controllers
                 Session["UserName"] = LoggedUser.UserName;
                 Session["LoginID"] = LoggedUser.LoginID;
                 //Session["AccessLevel"] = LoggedUser.AccessLevel; // Tämä mielenkiintoinen! Jätän toistaiseksi tämän tähän, jos sitä voisi hyödyntää mahdollisesti
-                return RedirectToAction("Index", "Home"); //Tässä määritellään mihin onnistunut kirjautuminen johtaa -> Home/Index
+                //return RedirectToAction("Index", "Home"); //Tässä määritellään mihin onnistunut kirjautuminen johtaa -> Home/Index
+                return RedirectToAction("Index"); //Tässä määritellään mihin onnistunut kirjautuminen johtaa -> Home/Index
             }
             else
             {

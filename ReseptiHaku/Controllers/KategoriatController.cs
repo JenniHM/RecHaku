@@ -17,10 +17,12 @@ namespace ReseptiHaku.Controllers
         // GET: Kategoriat
         public ActionResult Index()
         {
+            // Tämä johtaa /home/login/ vanhaan sisäänkirjautumis-näkymään.
+
             //if (Session["UserName"] == null)
             //{
             //    ViewBag.LoggedStatus = "Out";
-            //    return RedirectToAction("login", "home");                
+            //    return RedirectToAction("login", "home");
             //}
             //else
             //{
@@ -30,6 +32,38 @@ namespace ReseptiHaku.Controllers
             //}
             return View(db.Kategoriat.ToList());
         }
+
+        // Mikäli halutaan palauttaa sisäänkirjautumisen jälkeen ko. controllerin näkymään,
+        // vaaditaan controllerille oma Authorize-metodi ja siellä korrektit määritellyt kohtaan RedirectToAction("Index", "Kategoriat")
+        // sekä lisäksi jokaiselle tarvittavalle controllereille oma _LoginModal -partial view, joka vastaavasti ohjaa oikean kontrollerin Authorize-metodille.
+        // Muutoin riittää /Shared/_LoginModal, joka ohjaa HomeControllerin Authorize-metodille aina, riippumatta mistä Login tehdään.
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Authorize(Logins LoginModel)
+        //{
+        //    ReseptiHakuEntities2 db = new ReseptiHakuEntities2();
+        //    //Haetaan käyttäjän/Loginin tiedot annetuilla tunnistetiedoilla tietokannasta LINQ-kyselyllä
+        //    var LoggedUser = db.Logins.SingleOrDefault(x => x.UserName == LoginModel.UserName && x.PassWord == LoginModel.PassWord);
+        //    if (LoggedUser != null)
+        //    {
+        //        ViewBag.LoginMessage = "Succesfull login";
+        //        ViewBag.LoggedStatus = "In";
+        //        ViewBag.LoginError = 0; //Ei virhettä
+        //        Session["UserName"] = LoggedUser.UserName;
+        //        Session["LoginID"] = LoggedUser.LoginID;
+        //        //Session["AccessLevel"] = LoggedUser.AccessLevel; // Tämä mielenkiintoinen! Jätän toistaiseksi tämän tähän, jos sitä voisi hyödyntää mahdollisesti
+        //        return RedirectToAction("Index", "Kategoriat"); //Tässä määritellään mihin onnistunut kirjautuminen johtaa -> Home/Index
+        //    }
+        //    else
+        //    {
+        //        ViewBag.LoginMessage = "Login unsuccesfull";
+        //        ViewBag.LoggedStatus = "Out";
+        //        ViewBag.LoginError = 1; //Pakotetaan modaali login-ruutu uudelleen koska kirjautumisyritys on epäonnistunut
+        //        LoginModel.LoginErrorMessage = "Tuntematon käyttäjätunnus tai salasana.";
+        //        return View("Index", LoginModel);
+        //    }
+        //}
 
         // GET: Kategoriat/Details/5
         public ActionResult Details(int? id)
