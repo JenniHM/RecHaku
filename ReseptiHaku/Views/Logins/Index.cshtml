@@ -1,0 +1,64 @@
+﻿@*@model IEnumerable<ReseptiHaku.Models.Logins>*@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*FAS:iin liittyvä stylesheet linkki!*@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+@*JQuery, joka avaa modalin _CreateModal*@
+@section scripts {
+    <script type="text/javascript">
+        /*$(window).on('load', function () {*/
+        $('#buttonCreate').on('click', function () {
+            $('#CreateModal').modal('show');
+        });
+    </script>
+}
+
+<h2>Uuden käyttäjätunnuksen luominen</h2>
+
+<p>Haluatko luoda uuden käyttäjätunnuksen?</p>
+
+<p>
+    <button type="button" id="buttonCreate" class="btn btn-primary">Luo uusi käyttäjätunnus (modal)</button>
+    @Html.ActionLink("Peruuta", "Index", "Home", null, new { @class = "btn btn-danger" })
+
+</p>
+
+@*modaalin login-ikkunan renderöinti*@
+@{
+    Html.RenderPartial("_CreateModal");
+}
+
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassWord)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassWord)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.LoginID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.LoginID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.LoginID })
+            </td>
+        </tr>
+    }
+
+</table>*@

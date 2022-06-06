@@ -127,6 +127,7 @@
     <Compile Include="Controllers\foodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KategoriatController.cs" />
+    <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\MenuListaController.cs" />
     <Compile Include="Controllers\MenunKategoriatController.cs" />
     <Compile Include="Controllers\MenuVaihdeController.cs" />
@@ -394,6 +395,13 @@
     <Content Include="Views\Shared\_NavBarLoggedIn.cshtml" />
     <Content Include="Views\Shared\_NavBarLoggedOut.cshtml" />
     <Content Include="Views\Shared\_LoginModal.cshtml" />
+    <Content Include="Views\Logins\Create.cshtml" />
+    <Content Include="Views\Logins\Delete.cshtml" />
+    <Content Include="Views\Logins\Details.cshtml" />
+    <Content Include="Views\Logins\Edit.cshtml" />
+    <Content Include="Views\Logins\Index.cshtml" />
+    <Content Include="Views\Logins\Index3.cshtml" />
+    <Content Include="Views\Logins\_CreateModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
