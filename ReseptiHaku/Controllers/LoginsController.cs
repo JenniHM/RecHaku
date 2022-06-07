@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Windows.Forms;
 using ReseptiHaku.Models;
 
 namespace ReseptiHaku.Controllers
@@ -19,11 +20,24 @@ namespace ReseptiHaku.Controllers
         {
             // kaiken listaavalle Index(3):lle oikea return View parametreineen:
 
-            //return View(db.Logins.ToList());
+            return View(db.Logins.ToList());
+
+            // _CreateModal:in avaavan indexin return View
+            //ViewBag.Message = ("Haluatko luoda uuden käyttäjätunnuksen?");
+            //return View();
+
+            // muutkaan CRUD:in osat eivät tällä return Viewillä varmaankaan toimi
+        }
+
+        // GET: Logins
+        public ActionResult IndexUI()
+        {
             
             // _CreateModal:in avaavan indexin return View
-
+            ViewBag.Message = ("Haluatko luoda uuden käyttäjätunnuksen?");
             return View();
+
+            // muutkaan CRUD:in osat eivät tällä return Viewillä varmaankaan toimi
         }
 
         // GET: Logins/Details/5
@@ -46,7 +60,7 @@ namespace ReseptiHaku.Controllers
         {
             return View();
         }
-
+                
         // POST: Logins/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -54,11 +68,15 @@ namespace ReseptiHaku.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "LoginID,UserName,PassWord")] Logins logins)
         {
+            //ViewBag.Success = "";
             if (ModelState.IsValid)
             {
                 db.Logins.Add(logins);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //MessageBox.Show("Käyttäjätunnus luotu onnistuneesti. Ole hyvä ja kirjaudu sisään käyttäjätunnuksella ja salasanalla.");                
+                //ViewBag.Success = "Käyttäjätunnus ja salasana luotu onnistuneesti. Ole hyvä ja kirjaudu sisään käyttäjätunnuksella.";
+                TempData["success"] = "Käyttäjätunnus ja salasana luotu onnistuneesti. Ole hyvä ja kirjaudu sisään käyttäjätunnuksella.";
+                return RedirectToAction("IndexUI");
             }
 
             return View(logins);

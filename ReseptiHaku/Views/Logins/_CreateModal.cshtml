@@ -38,25 +38,25 @@
                                 @*nämäkään buttonit eivät renderöidy oikein class-määrityksen kanssa*@
 
                                 @*<input type="submit" value="Create" class="btn btn-default" />
-                                <button type="submit" class="btn btn-primary" form="createForm"></button>*@
+                                    <button type="submit" class="btn btn-primary" form="createForm"></button>*@
                             </div>
                         </div>
                     </div>
                 }
 
 
-            <div class="modal-footer">
-                @*toistaiseksi muotoiluna fas-ikonit, koska muutoin renderöityivät omituisesti vailla muotoilua - footerista johtuva?*@
+                <div class="modal-footer">
+                    @*toistaiseksi muotoiluna fas-ikonit, koska muutoin renderöityivät omituisesti vailla muotoilua - footerista johtuva?*@
 
-                @*Formin lähettävä button, joka ei kuitenkaan ole formin sisällä, mutta viittaa formin ID:hen*@
-                <button type="submit" class="btn btn-primary" form="createForm"><i class="fas fa-check"></i></button>
+                    @*Formin lähettävä button, joka ei kuitenkaan ole formin sisällä, mutta viittaa formin ID:hen*@
+                    <button type="submit" class="btn btn-primary" form="createForm"><i class="fas fa-check"></i></button>
 
-                @*Kontrollerin kutsu Url.Action -komennolla, jotta peruuttaminen johtaa takaisin /Home/Index -näkymään*@
-                <a href="@Url.Action("Index", "Home")" class="btn btn-primary"><i class="fas fa-times"></i></a>
+                    @*Kontrollerin kutsu Url.Action -komennolla, jotta peruuttaminen johtaa takaisin /Home/Index -näkymään*@
+                    <a href="@Url.Action("IndexUI", "Logins")" class="btn btn-primary"><i class="fas fa-times"></i></a>
 
-                @*<button type="button" class="btn btn-danger" data-dismiss="modal">Sulje</button>*@
+                    @*<button type="button" class="btn btn-danger" data-dismiss="modal">Sulje</button>*@
 
-            </div>
+                </div>
             </div>
         </div>
     </div>
