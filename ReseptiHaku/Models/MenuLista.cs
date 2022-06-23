@@ -31,5 +31,7 @@ namespace ReseptiHaku.Models
         public virtual Logins Logins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SuosikkiMenut> SuosikkiMenut { get; set; }
+        public virtual MenunKategoriat MenunKategoriat { get; set; }
+
     }
 }

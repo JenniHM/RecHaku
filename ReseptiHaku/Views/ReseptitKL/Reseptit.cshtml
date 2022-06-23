@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ReseptiHaku.Models.Reseptit>
+@*<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">*@
+
+
+@{
+    ViewBag.Title = "Reseptit";
+}
+
+<!--@section scripts {-->
+
+    @*JQuery, joka suoritetaan, kun klikataan getReseptiId-luokan mukaista elementtiä*@
+    <!--<script type="text/javascript">
+        $(function () {
+            $(".getReseptiId").click(function () {
+                let reseptiId = $(this).data("reseptiid");
+                console.log("Klikkasit reseptiä: " + reseptiId);
+                var url = "/ReseptitKL/_ModalEdit/?id=" + reseptiId;
+                console.log(url);
+
+                $("#reseptiEdit").append(" <b>Avataan reseptin " + reseptiId + " muokkausikkuna...</b>");
+
+                var $detailDivEdit = $("#reseptiEdit");
+                $.get(url, function (data) {
+                    $detailDivEdit.replaceWith(data);
+                    $('#ModalReseptiEdit').modal('show');
+                });
+            });
+        });
+
+    </script>
+}-->
+
+<h2>Reseptit</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@*<div id="reseptiEdit"></div>*@
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ReseptinNimi)</th>
+        <th>@Html.DisplayNameFor(model => model.AnnosKoko)</th>
+        <th>@Html.DisplayNameFor(model => model.Julkinen)</th>
+        <th>@Html.DisplayNameFor(model => model.Logins.UserName)</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*reseptin kohdalla tapahtunut klikkuas -> viittaus jqueryyn*@
+            @*<td><button class="getReseptiId fas fa-edit" data-orderid="@item.ReseptiID"></button></td>*@
+            <td>@Html.DisplayFor(modelItem => item.ReseptinNimi)</td>
+            <td>@Html.DisplayFor(modelItem => item.AnnosKoko)</td>
+            <td>@Html.DisplayFor(modelItem => item.Julkinen)</td>
+            <td>@Html.DisplayFor(modelItem => item.Logins.UserName)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ReseptiID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ReseptiID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ReseptiID })
+            </td>
+        </tr>
+    }
+
+</table>

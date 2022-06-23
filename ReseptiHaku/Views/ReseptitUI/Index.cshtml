@@ -1,0 +1,94 @@
+﻿@model PagedList.IPagedList<ReseptiHaku.Models.Reseptit>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            $(".showReseptiClass").click(function () {
+                let reseptiId = $(this).data("reseptiid");
+                alert("Klikkasit reseptinumeroa: " + reseptiId);
+                var url = "/ReseptitUI/_ReseptinAinesosat/?ReseptiID=" + reseptiId;
+                $("#reseptiTiedot_" + reseptiId).append(" <b>Ladataan reseptin " + reseptiId + " ainesosia...</b>");
+                var $detailDiv = $("#reseptiTiedot_" + reseptiId);
+                $.get(url, function (data) {
+                    $detailDiv.replaceWith(data);
+                });
+
+            });
+        });
+    </script>
+}
+
+<h2>Reseptit</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "ReseptitUI", FormMethod.Get))
+{
+    <div class="input-group">
+        <p class="px-1">@Html.Label("Etsi reseptiä nimellä:")</p>
+        <p class="px-1">@Html.TextBox("searchString1", ViewBag.currentFilter1 as string, new { @class = "form-control" })</p>
+        <p class="px-1"><input type="submit" value="Search" class="form-control" /></p>
+    </div>
+
+}
+
+<div class="container-fluid">
+    <div class="card-header">
+        <a class="card-link">
+            <form>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-warning font-weight-bold">Resepti</span>
+                    </div>
+                    <input type="text" class="form-control bg-warning font-weight-bold px-2" value="Reseptin nimi" disabled />
+                    <input type="text" class="form-control bg-warning font-weight-bold px-2" value="Annoskoko" disabled />
+                    @*<input type="text" class="form-control bg-warning font-weight-bold px-2" value="@Html.ActionLink("Reseptin nimi", "Index", new { sortOrder = ViewBag.ReseptiNimiSortParm, currentFilter1 = ViewBag.currentFilter1 })" disabled />
+                    <input type="text" class="form-control bg-warning font-weight-bold px-2" value="@Html.ActionLink("Annoskoko", "Index", new { sortOrder = ViewBag.AnnoskokoSortParm, currentFilter1 = ViewBag.currentFilter1 })" disabled />*@
+                    <input type="text" class="form-control bg-warning font-weight-bold px-2" value="Julkinen" disabled />
+                    @*<input type="text" class="form-control bg-warning font-weight-bold px-2" value="Käyttäjätunnus" disabled />*@
+                </div>
+            </form>
+        </a>
+    </div>
+    <div id="accordion">
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link showReseptiClass" data-orderid="@item.ReseptiID" data-bs-toggle="collapse" href="#collapse_@item.ReseptiID">
+                        <form>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">@item.ReseptiID</span>
+                                </div>
+                                <input type="text" class="form-control px-2" value="@item.ReseptinNimi" disabled /> @*disabled - ei salli kirjoittamista kenttiiin*@
+                                <input type="text" class="form-control px-2" value="@item.AnnosKoko" disabled />
+                                <input type="text" class="form-control px-2" value="@item.Julkinen" disabled />
+                                @*<input type="text" class="form-control px-2" value="@item.Logins.UserName" disabled />*@
+                            </div>
+                        </form>
+                    </a>
+                </div>
+                <div id="collapse_@item.ReseptiID" class="collapse" data-bs-parent="#accordion">
+                    <div class="card-body">
+                        <div id="reseptiTiedot_@item.ReseptiID"></div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @*sortOrder = ViewBag.CurrentSort,*@ currentFilter1 = ViewBag.currentFilter1 }))

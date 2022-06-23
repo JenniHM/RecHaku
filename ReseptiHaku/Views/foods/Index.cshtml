@@ -13,10 +13,11 @@
             var selValue = $("#singleSelectedTHSCODE").val();
             document.getElementById("FuclassCategory").value = selValue;
         });
+    </script>
 
-        @* JQuery, joka suoritetaan aina, kun sivu latautuu *@
-        @* Tarkistaa tuliko kontrollerilta tieto kirjautumisen epäonnistumisesta *@
-
+    @* JQuery, joka suoritetaan aina, kun sivu latautuu *@
+    @* Tarkistaa tuliko kontrollerilta tieto kirjautumisen epäonnistumisesta *@
+    <script>
         $(window).on('load', function () {
             if (@ViewBag.LoginError == 1) {
                 $('#LoginRuutu').modal('show');

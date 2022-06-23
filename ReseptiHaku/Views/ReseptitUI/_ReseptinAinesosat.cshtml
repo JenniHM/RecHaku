@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ReseptiHaku.ViewModels.ReseptitData>
+s
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ReseptiID)</th>
+            @*<th>@Html.DisplayNameFor(model => model.ReseptinNimi)</th>
+        <th>@Html.DisplayNameFor(model => model.AnnosKoko)</th>
+        <th>@Html.DisplayNameFor(model => model.LoginID)</th>
+        <th>@Html.DisplayNameFor(model => model.Julkinen)</th>
+        <th>@Html.DisplayNameFor(model => model.RiviID)</th>
+        <th>@Html.DisplayNameFor(model => model.ReseptiAinesosaListaID)</th>
+        <th>@Html.DisplayNameFor(model => model.RaakaAineID)</th>*@
+            @*<th>@Html.DisplayNameFor(model => model.RaakaAine)</th>*@
+            @*<th>@Html.DisplayNameFor(model => model.Maara)</th>*@
+            @*<th>@Html.DisplayNameFor(model => model.MittayksikkoID)</th>*@
+            @*<th>@Html.DisplayNameFor(model => model.KategoriaID)</th>*@
+            @*<th>@Html.DisplayNameFor(model => model.Mittayksikko)</th>*@
+            @*<th>@Html.DisplayNameFor(model => model.MittayksikkoSelite)</th>*@
+            @*<th>@Html.DisplayNameFor(model => model.Kategoria)</th>*@
+            <th>@Html.DisplayNameFor(model => model.ReseptiVaiheID)</th>
+            <th>@Html.DisplayNameFor(model => model.ReseptiVaihe)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ReseptiID)</td>
+            @*<td>@Html.DisplayFor(modelItem => item.ReseptinNimi)</td>
+            <td>@Html.DisplayFor(modelItem => item.AnnosKoko)</td>
+            <td>@Html.DisplayFor(modelItem => item.LoginID)</td>
+            <td>@Html.DisplayFor(modelItem => item.Julkinen)</td>
+            <td>@Html.DisplayFor(modelItem => item.RiviID)</td>
+            <td>@Html.DisplayFor(modelItem => item.ReseptiAinesosaListaID)</td>
+            <td>@Html.DisplayFor(modelItem => item.RaakaAineID)</td>*@
+            @*<td>@Html.DisplayFor(modelItem => item.RaakaAine)</td>*@
+            @*<td>@Html.DisplayFor(modelItem => item.Maara)</td>*@
+            @*<td>@Html.DisplayFor(modelItem => item.MittayksikkoID)</td>
+            <td>@Html.DisplayFor(modelItem => item.KategoriaID)</td>*@
+            @*<td>@Html.DisplayFor(modelItem => item.Mittayksikko)</td>*@
+            @*<td>@Html.DisplayFor(modelItem => item.MittayksikkoSelite)</td>*@
+            @*<td>@Html.DisplayFor(modelItem => item.Kategoria)</td>*@
+            <td>@Html.DisplayFor(modelItem => item.ReseptiVaiheID)</td>
+            <td>@Html.DisplayFor(modelItem => item.ReseptiVaihe)</td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

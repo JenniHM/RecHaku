@@ -96,7 +96,9 @@
         </EntityType>
         <EntityType Name="MenuVaihde">
           <Key>
-            <PropertyRef Name="RiviID" />
+            <PropertyRef Name="MenuID" />
+            <PropertyRef Name="ReseptiID" />
+            <PropertyRef Name="MenunKategoriaID" />
           </Key>
           <Property Name="RiviID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MenuID" Type="int" Nullable="false" />
@@ -153,7 +155,8 @@
         </EntityType>
         <EntityType Name="ReseptienVaiheidenLista">
           <Key>
-            <PropertyRef Name="RiviID" />
+            <PropertyRef Name="ReseptiID" />
+            <PropertyRef Name="ReseptiVaiheID" />
           </Key>
           <Property Name="RiviID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReseptiID" Type="int" Nullable="false" />
@@ -1067,7 +1070,9 @@ warning 6002: The table/view 'ReseptiHaku.dbo.SuosikkiReseptit' does not have a 
         </EntityType>
         <EntityType Name="MenuVaihde">
           <Key>
-            <PropertyRef Name="RiviID" />
+            <PropertyRef Name="MenuID" />
+            <PropertyRef Name="ReseptiID" />
+            <PropertyRef Name="MenunKategoriaID" />
           </Key>
           <Property Name="RiviID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MenuID" Type="Int32" Nullable="false" />
@@ -1111,7 +1116,7 @@ warning 6002: The table/view 'ReseptiHaku.dbo.SuosikkiReseptit' does not have a 
           </Key>
           <Property Name="ReseptiAinesosaListaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RaakaAineID" Type="Int32" Nullable="false" />
-          <Property Name="Maara" Type="Decimal" Nullable="false" />
+          <Property Name="Maara" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
           <Property Name="MittayksikkoID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MittayksikkoLista" Relationship="Self.FK_RESEPTIENAINESOSALISTA_MITTAYKSIKKOID" FromRole="ReseptienAinesosaLista" ToRole="MittayksikkoLista" />
           <NavigationProperty Name="RaakaAineet" Relationship="Self.FK_RESEPTIENAINESOSALISTA_RAAKAAINEID" FromRole="ReseptienAinesosaLista" ToRole="RaakaAineet" />
@@ -1137,7 +1142,8 @@ warning 6002: The table/view 'ReseptiHaku.dbo.SuosikkiReseptit' does not have a 
         </EntityType>
         <EntityType Name="ReseptienVaiheidenLista">
           <Key>
-            <PropertyRef Name="RiviID" />
+            <PropertyRef Name="ReseptiID" />
+            <PropertyRef Name="ReseptiVaiheID" />
           </Key>
           <Property Name="RiviID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReseptiID" Type="Int32" Nullable="false" />

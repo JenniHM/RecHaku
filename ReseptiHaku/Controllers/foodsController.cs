@@ -254,7 +254,7 @@ namespace ReseptiHakuTesti.Views
                 yksiFuclass_FI.THSCODE = raakaaineluokkay.THSCODE;
                 yksiFuclass_FI.DESCRIPT = raakaaineluokkay.DESCRIPT;
                 yksiFuclass_FI.CategoryName = raakaaineluokkay.DESCRIPT;
-                // fuclass_FI.cs -taulun luokkamääritykseen Models-kansiossa lisätty tämä "uusi" kenttä = CategoryName
+                // fuclass_FI.cs -taulun luokkamääritykseen Models-kansiossa lisätty tämä "uusi" kenttä = CategoryName                
                 lstRaakaAineLuokkaYlempi.Add(yksiFuclass_FI);
             }
             ViewBag.THSCODE = new SelectList(lstRaakaAineLuokkaYlempi, "THSCODE", "CategoryName", FuclassCategory);
@@ -395,6 +395,6 @@ namespace ReseptiHakuTesti.Views
             base.Dispose(disposing);
         }
 
-        
+
     } 
 }
