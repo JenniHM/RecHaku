@@ -1,0 +1,61 @@
+﻿@*@model IEnumerable<ReseptiHaku.Models.Reseptit>*@
+@model PagedList.IPagedList<ReseptiHaku.Models.Reseptit>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index3";
+}
+
+
+<h2>Reseptit</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index3", "ReseptitUI", FormMethod.Get))
+{
+    <div class="input-group">
+        <p class="px-1">@Html.Label("Etsi reseptiä nimellä:")</p>
+        <p class="px-1">@Html.TextBox("searchString1", ViewBag.currentFilter1 as string, new { @class = "form-control" })</p>
+        <p class="px-1"><input type="submit" value="Search" class="form-control" /></p>
+    </div>
+
+}
+
+
+<table class="table">
+    <tr>
+        @*<th>@Html.DisplayNameFor(model => model.ReseptinNimi)</th>*@
+        <th>@Html.ActionLink("Reseptin nimi", "Index3", new { sortOrder = ViewBag.ReseptiNimiSortParm, currentFilter1 = ViewBag.currentFilter1 })</th>
+        @*<th>@Html.DisplayNameFor(model => model.AnnosKoko)</th>*@
+        <th>@Html.ActionLink("Annoskoko", "Index3", new { sortOrder = ViewBag.AnnoskokoSortParm, currentFilter1 = ViewBag.currentFilter1 })</th>
+        @*<th>@Html.DisplayNameFor(model => model.Julkinen)</th>*@
+        <th>Julkinen</th>
+        @*<th>@Html.DisplayNameFor(model => model.Logins.UserName)</th>*@
+        <th>Käyttäjätunnus</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ReseptinNimi)</td>
+            <td>@Html.DisplayFor(modelItem => item.AnnosKoko)</td>
+            <td>@Html.DisplayFor(modelItem => item.Julkinen)</td>
+            <td>@Html.DisplayFor(modelItem => item.Logins.UserName)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ReseptiID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ReseptiID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ReseptiID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index3", new { page, sortOrder = ViewBag.CurrentSort, currentFilter1 = ViewBag.currentFilter1 }))

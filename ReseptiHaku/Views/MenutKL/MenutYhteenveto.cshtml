@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ReseptiHaku.ViewModels.MenutData>
+
+@{
+    ViewBag.Title = "MenutYhteenveto";
+}
+
+<h2>MenutYhteenveto</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.MenuID)</th>
+        <th>@Html.DisplayNameFor(model => model.MenunNimi)</th>
+        <th>@Html.DisplayNameFor(model => model.MenunKategoria)</th>
+        <th>@Html.DisplayNameFor(model => model.LoginID)</th>
+        <th>@Html.DisplayNameFor(model => model.Julkinen)</th>
+        @*<th>@Html.DisplayNameFor(model => model.RiviID)</th>*@
+        @*<th>@Html.DisplayNameFor(model => model.ReseptiID)</th>*@
+        @*<th>@Html.DisplayNameFor(model => model.MenunKategoriaID)</th>*@
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.MenuID)</td>
+        <td>@Html.DisplayFor(modelItem => item.MenunNimi)</td>
+        <td>@Html.DisplayFor(modelItem => item.MenunKategoria)</td>
+        <td>@Html.DisplayFor(modelItem => item.LoginID)</td>
+        <td>@Html.DisplayFor(modelItem => item.Julkinen)</td>
+        @*<td>@Html.DisplayFor(modelItem => item.RiviID)</td>*@
+        @*<td>@Html.DisplayFor(modelItem => item.ReseptiID)</td>*@
+        @*<td>@Html.DisplayFor(modelItem => item.MenunKategoriaID)</td>*@
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

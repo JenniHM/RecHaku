@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<ReseptiHaku.Models.MenuLista>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $("#singleSelectedMenunKategoriaID").on("change", function () {
+            //Getting Value
+            var selValue = $("singleSelectedMenunKategoriaID").val();
+            document.getElementById("MenuKategoria").value = selValue;
+        });
+    </script>
+}
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "MenutUI", FormMethod.Get))
+{
+<div class="input-group">
+    <p class="px-1">@Html.Label("Etsi menua nimellä:")</p>
+    <p class="px-1">@Html.TextBox("searchString1", ViewBag.currentFilter1 as string, new { @class = "form-control" })</p>
+    <p class="px-1">@Html.Label("Rajaa menuja kategorioittain:")</p>
+    <p class="px-1">@Html.Hidden("MenuKategoria", ViewBag.currentFilter1 as string, new { id = "MenuKategoria", @class = "form-control" }) </p>
+    <p class="px-1">@Html.DropDownList("MenunKategoriaID", null, htmlAttributes: new { @id = "singleSelectedMenunKategoriaID", @class = "form-control" }) </p>
+    <p class="px-1"><input type="submit" value="Search" class="form-control" /></p>
+</div>
+
+}
+
+<table class="table">
+    <tr>
+        @*<th>@Html.DisplayNameFor(model => model.MenunNimi)</th>*@
+        <th>@Html.ActionLink("Menun nimi", "Index", new { sortOrder = ViewBag.MenuNimiSortParm, currentFilter1 = ViewBag.currentFilter1, currentMenuKategoria = ViewBag.currentMenuKategoria })</th>
+        <th>MenunKategoriaID</th>
+        <th>Kategoria</th>
+        @*<th>@Html.DisplayNameFor(model => model.Julkinen)</th>*@
+        <th>Julkinen</th>
+        @*<th>@Html.DisplayNameFor(model => model.Logins.UserName)</th>*@
+        <th>Käyttäjätunnus</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.MenunNimi)</td>
+            <td>@Html.DisplayFor(modelItem => item.MenunKategoriat.MenunKategoriaID)</td>
+            <td>@Html.DisplayFor(modelItem => item.MenunKategoriat.MenunKategoria)</td>
+            <td>@Html.DisplayFor(modelItem => item.Julkinen)</td>
+            <td>@Html.DisplayFor(modelItem => item.Logins.UserName)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MenuID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MenuID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MenuID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter1 = ViewBag.currentFilter1, currentMenuKategoria = ViewBag.currentMenuKategoria }))
+

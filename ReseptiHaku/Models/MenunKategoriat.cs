@@ -22,8 +22,11 @@ namespace ReseptiHaku.Models
     
         public int MenunKategoriaID { get; set; }
         public string MenunKategoria { get; set; }
-    
+        public string MenunKategoriaIDKategorianNimi { get; set; }
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MenuVaihde> MenuVaihde { get; set; }
+
     }
 }

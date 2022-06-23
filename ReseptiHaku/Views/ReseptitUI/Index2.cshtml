@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ReseptiHaku.Models.Reseptit>
+
+@{
+    ViewBag.Title = "Index2";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReseptinNimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnnosKoko)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Julkinen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Logins.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReseptinNimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnnosKoko)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Julkinen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Logins.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ReseptiID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ReseptiID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ReseptiID })
+        </td>
+    </tr>
+}
+
+</table>
