@@ -1,6 +1,4 @@
-﻿@*@model IEnumerable<ReseptiHaku.Models.Logins>*@
-
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
@@ -26,7 +24,7 @@
 <p>@ViewBag.Message</p>
 
 <p>
-    <button type="button" id="buttonCreate" class="btn btn-success">Luo uusi käyttäjätunnus (modal)</button>
+    <button type="button" id="buttonCreate" class="btn btn-success">Luo uusi käyttäjätunnus</button>
     @Html.ActionLink("Peruuta", "Index", "Home", null, new { @class = "btn btn-danger" })
 
 </p>
@@ -36,33 +34,3 @@
     Html.RenderPartial("_CreateModal");
 }
 
-
-
-@*<table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.UserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PassWord)
-                </th>
-                <th></th>
-            </tr>
-
-        @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PassWord)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.LoginID }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.LoginID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.LoginID })
-                </td>
-            </tr>
-        }
-
-    </table>*@

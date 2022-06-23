@@ -36,11 +36,11 @@
 
 <h2>Reseptihaku</h2>
 
-<div class"input-group">
+@*<div class"input-group">
     <p class="px-1">@Html.Label("Hae reseptiä: ")<input name="reseptihaku" placeholder="Kirjoita tai valitse hakusanoja listalta"><a class="btn btn-primary">Hae!</a></p>
     <p class="px-1">@Html.Label("Valitut hakusanat:")</p>
     <p></p>
-</div>
+</div>*@
 
 <h2>Raaka-aineet</h2>
 
@@ -63,21 +63,13 @@
 
 <table class="table">
     <tr>
-        @*<th>@Html.DisplayNameFor(model => model.FOODNAME)</th>*@
         <th>@Html.ActionLink("Raaka-aine", "Index", new { sortOrder = ViewBag.RuokaNimiSortParm, currentFilter1 = ViewBag.currentFilter1, currentFuclassCategory = ViewBag.currentFuclassCategory })</th>
-        @*<th>@Html.DisplayNameFor(model => model.EDPORT)</th>*@
         <th>@Html.ActionLink("Syötävä osuus (%)", "Index", new { sortOrder = ViewBag.SyotavaOsuusSortParm, currentFilter1 = ViewBag.currentFilter1, currentFuclassCategory = ViewBag.currentFuclassCategory }) </th>
-        @*<th>@Html.DisplayNameFor(model => model.foodtype_FI.DESCRIPT)</th>*@
         <th>@Html.ActionLink("Elintarviketyyppi", "Index", new { sortOrder = ViewBag.ElintarviketyyppiSortParm, currentFilter1 = ViewBag.currentFilter1, currentFuclassCategory = ViewBag.currentFuclassCategory }) </th>
-        @*<th>@Html.DisplayNameFor(model => model.fuclass_FI.DESCRIPT)</th>*@
         <th>@Html.ActionLink("Ruoankäyttöluokka", "Index", new { sortOrder = ViewBag.RuoanKayttoLuokkaSortParm, currentFilter1 = ViewBag.currentFilter1, currentFuclassCategory = ViewBag.currentFuclassCategory })</th>
-        @*<th>@Html.DisplayNameFor(model => model.fuclass_FI1.DESCRIPT)</th>*@
         <th>@Html.ActionLink("Ruoankäyttöluokka, ylempi taso", "Index", new { sortOrder = ViewBag.RuoanKayttoLuokkaYSortParm, currentFilter1 = ViewBag.currentFilter1, currentFuclassCategory = ViewBag.currentFuclassCategory }) </th>
-        @*<th>@Html.DisplayNameFor(model => model.igclass_FI.DESCRIPT)</th>*@
         <th>@Html.ActionLink("Raaka-aineluokka", "Index", new { sortOrder = ViewBag.RaakaAineLuokkaSortParm, currentFilter1 = ViewBag.currentFilter1, currentFuclassCategory = ViewBag.currentFuclassCategory })</th>
-        @*<th>@Html.DisplayNameFor(model => model.igclass_FI1.DESCRIPT)</th>*@
         <th>@Html.ActionLink("Raaka-aineluokka, ylempi taso", "Index", new { sortOrder = ViewBag.RaakaAineLuokkaYSortParm, currentFilter1 = ViewBag.currentFilter1, currentFuclassCategory = ViewBag.currentFuclassCategory }) </th>
-        @*<th>@Html.DisplayNameFor(model => model.process_FI.DESCRIPT)</th>*@
         <th>@Html.ActionLink("Valmistustapa", "Index", new { sortOrder = ViewBag.ValmistustapaSortParm, currentFilter1 = ViewBag.currentFilter1, currentFuclassCategory = ViewBag.currentFuclassCategory })</th>
         <th></th>
     </tr>
